@@ -1,42 +1,59 @@
-using IMDBClone.Data;
+﻿using IMDBClone.Data;
+using IMDBClone.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
-namespace IMDBClone
-{
-    public class Program
-    {
-        public static void Main(string[] args)
-        {
-            var builder = WebApplication.CreateBuilder(args);
+var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
-            builder.Services.AddControllersWithViews();
-            builder.Services.AddDbContext<ApplicationDbContext>(options =>
+// Add services
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+builder.Services.AddIdentity<User, IdentityRole>()
+    .AddEntityFrameworkStores<ApplicationDbContext>()
+    .AddDefaultTokenProviders();
 
-            var app = builder.Build();
+var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
-            if (!app.Environment.IsDevelopment())
-            {
-                app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts();
-            }
+// ✅ Seed Roles & Admin User
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    var context = services.GetRequiredService<ApplicationDbContext>();
+    var userManager = services.GetRequiredService<UserManager<User>>();
+    var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
 
-            app.UseHttpsRedirection();
-            app.UseStaticFiles();
+    context.Database.Migrate();
 
-            app.UseRouting();
+    // Seed Roles
+    if (!context.Roles.Any())
+    {
+        roleManager.CreateAsync(new IdentityRole("Admin")).Wait();
+        roleManager.CreateAsync(new IdentityRole("User")).Wait();
+    }
 
-            app.UseAuthorization();
+    // Seed Admin User
+    if (!context.Users.Any(u => u.UserName == "admin"))
+    {
+        var adminUser = new User
+        {
+            Id = "6F9619FF-8B86-D011-B42D-00C04FC964FF",
+            UserName = "admin",
+            Email = "admin@imdbclone.com",
+            NormalizedUserName = "ADMIN",
+            NormalizedEmail = "ADMIN@IMDBCLONE.COM",
+            EmailConfirmed = true
+        };
 
-            app.MapControllerRoute(
-                name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+        var passwordHasher = new PasswordHasher<User>();
+        adminUser.PasswordHash = passwordHasher.HashPassword(adminUser, "Admin123!");
 
-            app.Run();
-        }
+        userManager.CreateAsync(adminUser).Wait();
+        userManager.AddToRoleAsync(adminUser, "Admin").Wait();
     }
 }
+
+app.UseAuthentication();
+app.UseAuthorization();
+app.MapControllers();
+app.Run();

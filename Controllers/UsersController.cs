@@ -22,14 +22,14 @@ namespace IMDBClone.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<User>>> GetUsers()
         {
-            return await _context.Users.ToListAsync();
+            return await _context.Set<User>().ToListAsync();
         }
 
         // GET: api/Users/5
         [HttpGet("{id}")]
         public async Task<ActionResult<User>> GetUser(int id)
         {
-            var user = await _context.Users.FindAsync(id);
+            var user = await _context.Set<User>().FindAsync(id);
 
             if (user == null) return NotFound();
             return user;
@@ -39,14 +39,14 @@ namespace IMDBClone.Controllers
         [HttpPost]
         public async Task<ActionResult<User>> PostUser(User user)
         {
-            _context.Users.Add(user);
+            _context.Set<User>().Add(user);
             await _context.SaveChangesAsync();
             return CreatedAtAction(nameof(GetUser), new { id = user.Id }, user);
         }
 
         // PUT: api/Users/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutUser(int id, User user)
+        public async Task<IActionResult> PutUser(string id, User user)
         {
             if (id != user.Id) return BadRequest();
 
@@ -59,10 +59,10 @@ namespace IMDBClone.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUser(int id)
         {
-            var user = await _context.Users.FindAsync(id);
+            var user = await _context.Set<User>().FindAsync(id);
             if (user == null) return NotFound();
 
-            _context.Users.Remove(user);
+            _context.Set<User>().Remove(user);
             await _context.SaveChangesAsync();
             return NoContent();
         }

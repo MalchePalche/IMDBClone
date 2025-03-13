@@ -22,7 +22,7 @@ namespace IMDBClone.Controllers
         [HttpGet("Users")]
         public async Task<ActionResult<IEnumerable<User>>> GetUsers()
         {
-            return await _context.Users.ToListAsync();
+            return await _context.Set<User>().ToListAsync();
         }
 
         // GET: api/Admin/MoviesБ
@@ -43,10 +43,10 @@ namespace IMDBClone.Controllers
         [HttpDelete("DeleteUser/{id}")]
         public async Task<IActionResult> DeleteUser(int id)
         {
-            var user = await _context.Users.FindAsync(id);
+            var user = await _context.Set<User>().FindAsync(id);
             if (user == null) return NotFound();
 
-            _context.Users.Remove(user);
+            _context.Set<User>().Remove(user);
             await _context.SaveChangesAsync();
             return NoContent();
         }
