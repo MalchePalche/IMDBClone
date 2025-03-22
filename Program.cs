@@ -15,7 +15,7 @@ builder.Services.AddIdentity<User, IdentityRole>()
 
 builder.Services.AddAuthorization(); // ✅ This line is required
 
-builder.Services.AddControllers(); // ✅ Add 
+builder.Services.AddControllersWithViews(); // ✅ enables Razor view rendering
 
 builder.Services.AddEndpointsApiExplorer();
 
@@ -68,4 +68,8 @@ app.UseAuthorization();
 app.UseSwagger();
 app.UseSwaggerUI();
 app.MapControllers();
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Home}/{action=Index}/{id?}");
+
 app.Run();
