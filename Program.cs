@@ -13,6 +13,16 @@ builder.Services.AddIdentity<User, IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>()
     .AddDefaultTokenProviders();
 
+builder.Services.AddAuthorization(); // ✅ This line is required
+
+builder.Services.AddControllers(); // ✅ Add 
+
+builder.Services.AddEndpointsApiExplorer();
+
+builder.Services.AddSwaggerGen();
+
+
+
 var app = builder.Build();
 
 // ✅ Seed Roles & Admin User
@@ -55,5 +65,7 @@ using (var scope = app.Services.CreateScope())
 
 app.UseAuthentication();
 app.UseAuthorization();
+app.UseSwagger();
+app.UseSwaggerUI();
 app.MapControllers();
 app.Run();
