@@ -18,5 +18,18 @@ namespace IMDBClone.NonAPI
             var movies = await _context.Movies.Include(m => m.Genre).ToListAsync();
             return View(movies);
         }
+        public async Task<IActionResult> Details(int id)
+        {
+            var movie = await _context.Movies
+                .Include(m => m.Genre)
+                .Include(m => m.Reviews)
+                .ThenInclude(r => r.User)
+                .FirstOrDefaultAsync(m => m.Id == id);
+
+            if (movie == null) return NotFound();
+
+            return View(movie);
+        }
+
     }
 }
