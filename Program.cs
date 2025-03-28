@@ -15,13 +15,12 @@ builder.Services.AddIdentity<User, IdentityRole>()
 
 builder.Services.AddAuthorization(); // ✅ This line is required
 
-builder.Services.AddControllersWithViews(); // ✅ enables Razor view rendering
+// ✅ Register NonAPI Controllers like MoviesPageController
+builder.Services.AddControllersWithViews()
+    .AddApplicationPart(typeof(IMDBClone.NonAPI.MoviesPageController).Assembly);
 
 builder.Services.AddEndpointsApiExplorer();
-
 builder.Services.AddSwaggerGen();
-
-
 
 var app = builder.Build();
 
@@ -67,7 +66,8 @@ app.UseAuthentication();
 app.UseAuthorization();
 app.UseSwagger();
 app.UseSwaggerUI();
-app.MapControllers();
+
+app.MapControllers(); // Supports [Route] or [ApiController] usage
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");

@@ -20,6 +20,7 @@ namespace IMDBClone.Models
         [Range(1, 10)]
         public int Rating { get; set; }
 
+        [Required]
         public string Comment { get; set; }
     }
 }
