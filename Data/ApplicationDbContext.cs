@@ -18,13 +18,31 @@ namespace IMDBClone.Data
         {
             base.OnModelCreating(modelBuilder); // Ensures Identity tables are created
 
+            // ✅ Fix Identity token key lengths (prevents migration error)
+            modelBuilder.Entity<IdentityUserLogin<string>>(entity =>
+            {
+                entity.Property(m => m.LoginProvider).HasMaxLength(450);
+                entity.Property(m => m.ProviderKey).HasMaxLength(450);
+            });
+
+            modelBuilder.Entity<IdentityUserRole<string>>(entity =>
+            {
+                entity.Property(m => m.UserId).HasMaxLength(450);
+                entity.Property(m => m.RoleId).HasMaxLength(450);
+            });
+
+            modelBuilder.Entity<IdentityUserToken<string>>(entity =>
+            {
+                entity.Property(m => m.UserId).HasMaxLength(450);
+                entity.Property(m => m.LoginProvider).HasMaxLength(450);
+                entity.Property(m => m.Name).HasMaxLength(450);
+            });
+
             // Seed Roles FIRST
             modelBuilder.Entity<IdentityRole>().HasData(
                 new IdentityRole { Id = "1", Name = "Admin", NormalizedName = "ADMIN" },
                 new IdentityRole { Id = "2", Name = "User", NormalizedName = "USER" }
             );
-
-            // ❌ Removed admin user from `HasData()`, moved to `Program.cs`
 
             // Seed Genres
             modelBuilder.Entity<Genre>().HasData(
