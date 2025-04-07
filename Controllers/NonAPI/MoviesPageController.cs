@@ -2,6 +2,9 @@
 using IMDBClone.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using IMDBClone.ViewModels;
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace IMDBClone.NonAPI
 {
@@ -25,17 +28,33 @@ namespace IMDBClone.NonAPI
             var movie = await _context.Movies
                 .Include(m => m.Genre)
                 .Include(m => m.Reviews)
-                .ThenInclude(r => r.User)
+                    .ThenInclude(r => r.User)
                 .FirstOrDefaultAsync(m => m.Id == id);
 
             if (movie == null) return NotFound();
 
-            return View(movie);
+            var viewModel = new MovieDetailsViewModel
+            {
+                Movie = movie,
+                GenreName = movie.Genre?.Name ?? "Unknown",
+                Reviews = movie.Reviews.Select(r => new ReviewDisplayViewModel
+                {
+                    Rating = r.Rating,
+                    Comment = r.Comment,
+                    UserName = r.User?.UserName ?? "Unknown"
+                }).ToList()
+            };
+
+            return View(viewModel);
         }
 
+
         [HttpPost]
-        public async Task<IActionResult> AddReview(int movieId, string userId, int rating, string comment)
+        [Authorize] // Requires the user to be logged in
+        public async Task<IActionResult> AddReview(int movieId, int rating, string comment)
         {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
             if (movieId <= 0 || string.IsNullOrWhiteSpace(userId) || rating < 1 || rating > 10 || string.IsNullOrWhiteSpace(comment))
             {
                 Console.WriteLine("❌ Invalid review submission:");
