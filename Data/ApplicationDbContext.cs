@@ -55,30 +55,225 @@ namespace IMDBClone.Data
 
             // Seed Movies
             modelBuilder.Entity<Movie>().HasData(
-                new Movie { Id = 1, Title = "Inception", Description = "A mind-bending thriller", ReleaseYear = 2010, Director = "Christopher Nolan", GenreId = 5 },
-                new Movie { Id = 2, Title = "The Godfather", Description = "A mafia classic", ReleaseYear = 1972, Director = "Francis Ford Coppola", GenreId = 2 },
-                new Movie { Id = 3, Title = "The Dark Knight", Description = "Batman battles Joker in Gotham", ReleaseYear = 2008, Director = "Christopher Nolan", GenreId = 1 },
-                new Movie { Id = 4, Title = "Forrest Gump", Description = "Life story of a simple man", ReleaseYear = 1994, Director = "Robert Zemeckis", GenreId = 2 },
-                new Movie { Id = 5, Title = "The Matrix", Description = "Reality is not what it seems", ReleaseYear = 1999, Director = "The Wachowskis", GenreId = 5 },
-                new Movie { Id = 6, Title = "Parasite", Description = "A dark satire of class inequality", ReleaseYear = 2019, Director = "Bong Joon-ho", GenreId = 2 },
-                new Movie { Id = 7, Title = "Gladiator", Description = "A Roman general seeks revenge", ReleaseYear = 2000, Director = "Ridley Scott", GenreId = 1 },
-                new Movie { Id = 8, Title = "The Hangover", Description = "A wild bachelor party in Vegas", ReleaseYear = 2009, Director = "Todd Phillips", GenreId = 3 },
-                new Movie { Id = 9, Title = "Interstellar", Description = "A space-time journey to save humanity", ReleaseYear = 2014, Director = "Christopher Nolan", GenreId = 5 },
-                new Movie { Id = 10, Title = "Titanic", Description = "A romance aboard a doomed ship", ReleaseYear = 1997, Director = "James Cameron", GenreId = 2 },
-                new Movie { Id = 11, Title = "The Conjuring", Description = "Paranormal investigators face a haunted house", ReleaseYear = 2013, Director = "James Wan", GenreId = 4 },
-                new Movie { Id = 12, Title = "Get Out", Description = "A psychological horror with social commentary", ReleaseYear = 2017, Director = "Jordan Peele", GenreId = 4 },
-                new Movie { Id = 13, Title = "The Avengers", Description = "Marvel heroes unite to save the world", ReleaseYear = 2012, Director = "Joss Whedon", GenreId = 1 },
-                new Movie { Id = 14, Title = "Back to the Future", Description = "Teen travels through time in a DeLorean", ReleaseYear = 1985, Director = "Robert Zemeckis", GenreId = 5 },
-                new Movie { Id = 15, Title = "Joker", Description = "Origin story of the Joker", ReleaseYear = 2019, Director = "Todd Phillips", GenreId = 2 },
-                new Movie { Id = 16, Title = "Shrek", Description = "An ogre goes on a quest", ReleaseYear = 2001, Director = "Andrew Adamson", GenreId = 3 },
-                new Movie { Id = 17, Title = "The Silence of the Lambs", Description = "FBI agent consults a cannibal killer", ReleaseYear = 1991, Director = "Jonathan Demme", GenreId = 4 },
-                new Movie { Id = 18, Title = "Toy Story", Description = "Toys come to life", ReleaseYear = 1995, Director = "John Lasseter", GenreId = 3 },
-                new Movie { Id = 19, Title = "Blade Runner 2049", Description = "A replicant uncovers buried secrets", ReleaseYear = 2017, Director = "Denis Villeneuve", GenreId = 5 },
-                new Movie { Id = 20, Title = "The Shawshank Redemption", Description = "A banker is wrongfully imprisoned", ReleaseYear = 1994, Director = "Frank Darabont", GenreId = 2 },
-                new Movie { Id = 21, Title = "Mad Max: Fury Road", Description = "Post-apocalyptic action ride", ReleaseYear = 2015, Director = "George Miller", GenreId = 1 },
-                new Movie { Id = 22, Title = "The Sixth Sense", Description = "A boy sees dead people", ReleaseYear = 1999, Director = "M. Night Shyamalan", GenreId = 4 }
-
-
+                new Movie
+                {
+                    Id = 1,
+                    Title = "Inception",
+                    Description = "A mind-bending thriller",
+                    ReleaseYear = 2010,
+                    Director = "Christopher Nolan",
+                    GenreId = 5,
+                    PosterUrl = "https://upload.wikimedia.org/wikipedia/en/7/7f/Inception_ver3.jpg"
+                },
+                new Movie
+                {
+                    Id = 2,
+                    Title = "The Godfather",
+                    Description = "A mafia classic",
+                    ReleaseYear = 1972,
+                    Director = "Francis Ford Coppola",
+                    GenreId = 2,
+                    PosterUrl = "https://upload.wikimedia.org/wikipedia/en/1/1c/Godfather_ver1.jpg"
+                },
+                new Movie
+                {
+                    Id = 3,
+                    Title = "The Dark Knight",
+                    Description = "Batman battles Joker in Gotham",
+                    ReleaseYear = 2008,
+                    Director = "Christopher Nolan",
+                    GenreId = 1,
+                    PosterUrl = "https://upload.wikimedia.org/wikipedia/en/8/8a/Dark_Knight.jpg"
+                },
+                new Movie
+                {
+                    Id = 4,
+                    Title = "Forrest Gump",
+                    Description = "Life story of a simple man",
+                    ReleaseYear = 1994,
+                    Director = "Robert Zemeckis",
+                    GenreId = 2,
+                    PosterUrl = "https://upload.wikimedia.org/wikipedia/en/6/67/Forrest_Gump_poster.jpg"
+                },
+                new Movie
+                {
+                    Id = 5,
+                    Title = "The Matrix",
+                    Description = "Reality is not what it seems",
+                    ReleaseYear = 1999,
+                    Director = "The Wachowskis",
+                    GenreId = 5,
+                    PosterUrl = "https://upload.wikimedia.org/wikipedia/en/c/c1/The_Matrix_Poster.jpg"
+                },
+                new Movie
+                {
+                    Id = 6,
+                    Title = "Parasite",
+                    Description = "A dark satire of class inequality",
+                    ReleaseYear = 2019,
+                    Director = "Bong Joon-ho",
+                    GenreId = 2,
+                    PosterUrl = "https://upload.wikimedia.org/wikipedia/en/5/53/Parasite_%282019_film%29.png"
+                },
+                new Movie
+                {
+                    Id = 7,
+                    Title = "Gladiator",
+                    Description = "A Roman general seeks revenge",
+                    ReleaseYear = 2000,
+                    Director = "Ridley Scott",
+                    GenreId = 1,
+                    PosterUrl = "https://upload.wikimedia.org/wikipedia/en/8/8d/Gladiator_ver1.jpg"
+                },
+                new Movie
+                {
+                    Id = 8,
+                    Title = "The Hangover",
+                    Description = "A wild bachelor party in Vegas",
+                    ReleaseYear = 2009,
+                    Director = "Todd Phillips",
+                    GenreId = 3,
+                    PosterUrl = "https://upload.wikimedia.org/wikipedia/en/b/b9/Hangoverposter09.jpg"
+                },
+                new Movie
+                {
+                    Id = 9,
+                    Title = "Interstellar",
+                    Description = "A space-time journey to save humanity",
+                    ReleaseYear = 2014,
+                    Director = "Christopher Nolan",
+                    GenreId = 5,
+                    PosterUrl = "https://upload.wikimedia.org/wikipedia/en/b/bc/Interstellar_film_poster.jpg"
+                },
+                new Movie
+                {
+                    Id = 10,
+                    Title = "Titanic",
+                    Description = "A romance aboard a doomed ship",
+                    ReleaseYear = 1997,
+                    Director = "James Cameron",
+                    GenreId = 2,
+                    PosterUrl = "https://upload.wikimedia.org/wikipedia/en/2/22/Titanic_poster.jpg"
+                },
+                new Movie
+                {
+                    Id = 11,
+                    Title = "The Conjuring",
+                    Description = "Paranormal investigators face a haunted house",
+                    ReleaseYear = 2013,
+                    Director = "James Wan",
+                    GenreId = 4,
+                    PosterUrl = "https://upload.wikimedia.org/wikipedia/en/1/1f/Conjuring_poster.jpg"
+                },
+                new Movie
+                {
+                    Id = 12,
+                    Title = "Get Out",
+                    Description = "A psychological horror with social commentary",
+                    ReleaseYear = 2017,
+                    Director = "Jordan Peele",
+                    GenreId = 4,
+                    PosterUrl = "https://upload.wikimedia.org/wikipedia/en/a/a3/Get_Out_poster.png"
+                },
+                new Movie
+                {
+                    Id = 13,
+                    Title = "The Avengers",
+                    Description = "Marvel heroes unite to save the world",
+                    ReleaseYear = 2012,
+                    Director = "Joss Whedon",
+                    GenreId = 1,
+                    PosterUrl = "https://upload.wikimedia.org/wikipedia/en/f/f9/TheAvengers2012Poster.jpg"
+                },
+                new Movie
+                {
+                    Id = 14,
+                    Title = "Back to the Future",
+                    Description = "Teen travels through time in a DeLorean",
+                    ReleaseYear = 1985,
+                    Director = "Robert Zemeckis",
+                    GenreId = 5,
+                    PosterUrl = "https://upload.wikimedia.org/wikipedia/en/d/d2/Back_to_the_Future.jpg"
+                },
+                new Movie
+                {
+                    Id = 15,
+                    Title = "Joker",
+                    Description = "Origin story of the Joker",
+                    ReleaseYear = 2019,
+                    Director = "Todd Phillips",
+                    GenreId = 2,
+                    PosterUrl = "https://upload.wikimedia.org/wikipedia/en/e/e1/Joker_%282019_film%29_poster.jpg"
+                },
+                new Movie
+                {
+                    Id = 16,
+                    Title = "Shrek",
+                    Description = "An ogre goes on a quest",
+                    ReleaseYear = 2001,
+                    Director = "Andrew Adamson",
+                    GenreId = 3,
+                    PosterUrl = "https://upload.wikimedia.org/wikipedia/en/3/39/Shrek.jpg"
+                },
+                new Movie
+                {
+                    Id = 17,
+                    Title = "The Silence of the Lambs",
+                    Description = "FBI agent consults a cannibal killer",
+                    ReleaseYear = 1991,
+                    Director = "Jonathan Demme",
+                    GenreId = 4,
+                    PosterUrl = "https://upload.wikimedia.org/wikipedia/en/8/86/The_Silence_of_the_Lambs_poster.jpg"
+                },
+                new Movie
+                {
+                    Id = 18,
+                    Title = "Toy Story",
+                    Description = "Toys come to life",
+                    ReleaseYear = 1995,
+                    Director = "John Lasseter",
+                    GenreId = 3,
+                    PosterUrl = "https://upload.wikimedia.org/wikipedia/en/1/13/Toy_Story.jpg"
+                },
+                new Movie 
+                { 
+                    Id = 19, 
+                    Title = "Blade Runner 2049", 
+                    Description = "A replicant uncovers buried secrets", 
+                    ReleaseYear = 2017, 
+                    Director = "Denis Villeneuve", 
+                    GenreId = 5, 
+                    PosterUrl = "https://m.media-amazon.com/images/M/MV5BNzA1Njg4NzYxOV5BMl5BanBnXkFtZTgwODk5NjU3MzI@._V1_.jpg"
+                },
+                new Movie 
+                { 
+                    Id = 20, 
+                    Title = "The Shawshank Redemption", 
+                    Description = "A banker is wrongfully imprisoned", 
+                    ReleaseYear = 1994, 
+                    Director = "Frank Darabont", 
+                    GenreId = 2, 
+                    PosterUrl = "https://m.media-amazon.com/images/M/MV5BMDAyY2FhYjctNDc5OS00MDNlLThiMGUtY2UxYWVkNGY2ZjljXkEyXkFqcGc@._V1_.jpg"
+                },
+                new Movie 
+                { 
+                    Id = 21, 
+                    Title = "Mad Max: Fury Road", 
+                    Description = "Post-apocalyptic action ride",
+                    ReleaseYear = 2015, 
+                    Director = "George Miller", 
+                    GenreId = 1, 
+                    PosterUrl = "https://m.media-amazon.com/images/M/MV5BZDRkODJhOTgtOTc1OC00NTgzLTk4NjItNDgxZDY4YjlmNDY2XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"
+                },
+                new Movie 
+                { 
+                    Id = 22, Title = "The Sixth Sense", 
+                    Description = "A boy sees dead people", 
+                    ReleaseYear = 1999,
+                    Director = "M. Night Shyamalan", 
+                    GenreId = 4, 
+                    PosterUrl = "https://m.media-amazon.com/images/M/MV5BZWQ2OTY0M2UtMTQxNC00MmIzLTllNDQtNDQ0MTQyYzI2M2ZiXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"
+                }
             );
         }
     }

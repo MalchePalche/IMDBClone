@@ -24,5 +24,9 @@ namespace IMDBClone.Models
         public Genre Genre { get; set; }
 
         public ICollection<Review> Reviews { get; set; }
+        public string PosterUrl { get; set; } = string.Empty;
+
+
+
     }
 }
