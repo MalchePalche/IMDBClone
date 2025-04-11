@@ -1,4 +1,6 @@
-﻿@{
+﻿@model List<IMDBClone.Models.Movie>
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -16,54 +18,17 @@
 
         <div class="position-relative overflow-hidden">
             <div class="d-flex" id="carouselTrack" style="transition: transform 0.5s ease;">
-                <div class="featured-card">
-                    <img src="https://upload.wikimedia.org/wikipedia/en/f/fc/Fight_Club_poster.jpg" class="card-img-top rounded" />
-                    <div class="mt-2">
-                        <h5 class="text-white">Fight Club</h5>
-                        <p class="text-muted small">An insomniac and a soap maker form a secret fight club.</p>
-                        <a href="#" class="btn btn-outline-light btn-sm">View</a>
+                @foreach (var movie in Model)
+                {
+                    <div class="featured-card">
+                        <img src="@movie.PosterUrl" class="card-img-top rounded" />
+                        <div class="mt-2">
+                            <h5 class="text-white">@movie.Title</h5>
+                            <p class="text-muted small">@movie.Description</p>
+                            <a asp-controller="MoviesPage" asp-action="Details" asp-route-id="@movie.Id" class="btn btn-outline-light btn-sm">View</a>
+                        </div>
                     </div>
-                </div>
-                <div class="featured-card">
-                    <img src="https://upload.wikimedia.org/wikipedia/en/0/0d/Avengers_Endgame_poster.jpg" class="card-img-top rounded" />
-                    <div class="mt-2">
-                        <h5 class="text-white">Avengers Endgame</h5>
-                        <p class="text-muted small">Avengers try to reverse Thanos' snap in Endgame.</p>
-                        <a href="#" class="btn btn-outline-light btn-sm">View</a>
-                    </div>
-                </div>
-                <div class="featured-card">
-                    <img src="https://upload.wikimedia.org/wikipedia/en/8/87/StarWarsMoviePoster1977.jpg" class="card-img-top rounded" />
-                    <div class="mt-2">
-                        <h5 class="text-white">Star Wars: A New Hope</h5>
-                        <p class="text-muted small">Luke Skywalker joins a rebellion to fight the Empire.</p>
-                        <a href="#" class="btn btn-outline-light btn-sm">View</a>
-                    </div>
-                </div>
-                <div class="featured-card">
-                    <img src="@Html.Raw("https://m.media-amazon.com/images/M/MV5BYjdlNWFlZjEtM2U0NS00ZWU5LTk1M2EtZmQxNWFiZjk0MGM5XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg")" class="card-img-top rounded" />
-                    <div class="mt-2">
-                        <h5 class="text-white">John Wick 3</h5>
-                        <p class="text-muted small">John Wick is excommunicated and hunted by assassins.</p>
-                        <a href="#" class="btn btn-outline-light btn-sm">View</a>
-                    </div>
-                </div>
-                <div class="featured-card">
-                    <img src="@Html.Raw("https://m.media-amazon.com/images/M/MV5BYzdjMDAxZGItMjI2My00ODA1LTlkNzItOWFjMDU5ZDJlYWY3XkEyXkFqcGc@._V1_.jpg")" class="card-img-top rounded" />
-                    <div class="mt-2">
-                        <h5 class="text-white">Interstellar</h5>
-                        <p class="text-muted small">Astronauts travel through a wormhole to save Earth.</p>
-                        <a href="#" class="btn btn-outline-light btn-sm">View</a>
-                    </div>
-                </div>
-                <div class="featured-card">
-                    <img src="@Html.Raw("https://m.media-amazon.com/images/M/MV5BMjExMjkwNTQ0Nl5BMl5BanBnXkFtZTcwNTY0OTk1Mw@@._V1_.jpg")" class="card-img-top rounded" />
-                    <div class="mt-2">
-                        <h5 class="text-white">Inception</h5>
-                        <p class="text-muted small">A thief invades dreams to implant ideas or steal them.</p>
-                        <a href="#" class="btn btn-outline-light btn-sm">View</a>
-                    </div>
-                </div>
+                }
             </div>
 
             <!-- Arrows -->
@@ -77,9 +42,6 @@
     </div>
 
     <style>
-        .carousel-item {
-            transition: transform 0.6s ease-in-out;
-        }
         .featured-card {
             flex: 0 0 calc(100% / 3);
             max-width: calc(100% / 3);
@@ -91,33 +53,9 @@
             .featured-card {
                 flex: 0 0 100%;
                 max-width: 100%;
+            }
         }
-    }
     </style>
-
-
-
-    <!-- Genres Overview -->
-    <div class="mb-5">
-        <h3 class="text-light mb-4">🎭 Browse by Genre</h3>
-        <div class="row row-cols-1 row-cols-md-5 g-3">
-            <div class="col">
-                <a asp-controller="GenresPage" asp-action="Index" class="btn btn-outline-light w-100">Action</a>
-            </div>
-            <div class="col">
-                <a asp-controller="GenresPage" asp-action="Index" class="btn btn-outline-light w-100">Comedy</a>
-            </div>
-            <div class="col">
-                <a asp-controller="GenresPage" asp-action="Index" class="btn btn-outline-light w-100">Drama</a>
-            </div>
-            <div class="col">
-                <a asp-controller="GenresPage" asp-action="Index" class="btn btn-outline-light w-100">Sci-Fi</a>
-            </div>
-            <div class="col">
-                <a asp-controller="GenresPage" asp-action="Index" class="btn btn-outline-light w-100">Horror</a>
-            </div>
-        </div>
-    </div>
 
     <!-- Call to Action -->
     <div class="text-center py-5">
@@ -137,7 +75,6 @@
 
             scrollIndex += direction;
 
-            // Loop if out of bounds
             if (scrollIndex < 0) scrollIndex = totalCards - 3;
             if (scrollIndex > totalCards - 3) scrollIndex = 0;
 

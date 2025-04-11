@@ -270,12 +270,53 @@ namespace IMDBClone.Data
                 },
                 new Movie 
                 { 
-                    Id = 22, Title = "The Sixth Sense", 
+                    Id = 22, 
+                    Title = "The Sixth Sense", 
                     Description = "A boy sees dead people", 
                     ReleaseYear = 1999,
                     Director = "M. Night Shyamalan", 
                     GenreId = 4, 
                     PosterUrl = "https://m.media-amazon.com/images/M/MV5BZWQ2OTY0M2UtMTQxNC00MmIzLTllNDQtNDQ0MTQyYzI2M2ZiXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"
+                },
+                new Movie
+                {
+                    Id = 23,
+                    Title = "John Wick 3",
+                    Description = "John Wick is excommunicated and hunted by assassins.",
+                    ReleaseYear = 2019,
+                    Director = "David Fincher",
+                    GenreId = 1,
+                    PosterUrl = "https://m.media-amazon.com/images/M/MV5BYjdlNWFlZjEtM2U0NS00ZWU5LTk1M2EtZmQxNWFiZjk0MGM5XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"
+                },
+                new Movie
+                {
+                    Id = 24,
+                    Title = "Star Wars: A New Hope",
+                    Description = "Luke Skywalker joins a rebellion to fight the Empire.",
+                    ReleaseYear = 1977,
+                    Director = "George Lucas",
+                    GenreId = 5,
+                    PosterUrl = "https://upload.wikimedia.org/wikipedia/en/8/87/StarWarsMoviePoster1977.jpg"
+                },
+                new Movie
+                {
+                    Id = 25,
+                    Title = "Avengers Endgame",
+                    Description = "Avengers try to reverse Thanos' snap in Endgame.",
+                    ReleaseYear = 2019,
+                    Director = "Anthony Russo, Joe Russo",
+                    GenreId = 1,
+                    PosterUrl = "https://upload.wikimedia.org/wikipedia/en/0/0d/Avengers_Endgame_poster.jpg"
+                },
+                new Movie
+                {
+                    Id = 26,
+                    Title = "Fight Club",
+                    Description = "An insomniac and a soap maker form a secret fight club.",
+                    ReleaseYear = 1999,
+                    Director = "David Fincher",
+                    GenreId = 1,
+                    PosterUrl = "https://upload.wikimedia.org/wikipedia/en/f/fc/Fight_Club_poster.jpg"
                 }
             );
         }
