@@ -13,6 +13,7 @@ namespace IMDBClone.Data
         public DbSet<Genre> Genres { get; set; }
         public DbSet<Review> Reviews { get; set; }
         public DbSet<FavoriteMovie> FavoriteMovies { get; set; }
+        public DbSet<WatchlistItem> watchlistItems { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -37,6 +38,8 @@ namespace IMDBClone.Data
                 entity.Property(m => m.LoginProvider).HasMaxLength(450);
                 entity.Property(m => m.Name).HasMaxLength(450);
             });
+
+            modelBuilder.Entity<WatchlistItem>().HasKey(w => w.Id);
 
             // Seed Roles FIRST
             modelBuilder.Entity<IdentityRole>().HasData(
@@ -63,7 +66,7 @@ namespace IMDBClone.Data
                     ReleaseYear = 2010,
                     Director = "Christopher Nolan",
                     GenreId = 5,
-                    PosterUrl = "https://upload.wikimedia.org/wikipedia/en/7/7f/Inception_ver3.jpg"
+                    PosterUrl = "https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_FMjpg_UX1000_.jpg"
                 },
                 new Movie
                 {
@@ -83,7 +86,7 @@ namespace IMDBClone.Data
                     ReleaseYear = 2008,
                     Director = "Christopher Nolan",
                     GenreId = 1,
-                    PosterUrl = "https://upload.wikimedia.org/wikipedia/en/8/8a/Dark_Knight.jpg"
+                    PosterUrl = "https://musicart.xboxlive.com/7/abb02f00-0000-0000-0000-000000000002/504/image.jpg"
                 },
                 new Movie
                 {
@@ -123,7 +126,7 @@ namespace IMDBClone.Data
                     ReleaseYear = 2000,
                     Director = "Ridley Scott",
                     GenreId = 1,
-                    PosterUrl = "https://upload.wikimedia.org/wikipedia/en/8/8d/Gladiator_ver1.jpg"
+                    PosterUrl = "https://tr.web.img3.acsta.net/pictures/bzp/01/24944.jpg"
                 },
                 new Movie
                 {
@@ -153,7 +156,7 @@ namespace IMDBClone.Data
                     ReleaseYear = 1997,
                     Director = "James Cameron",
                     GenreId = 2,
-                    PosterUrl = "https://upload.wikimedia.org/wikipedia/en/2/22/Titanic_poster.jpg"
+                    PosterUrl = "https://i.ebayimg.com/images/g/94QAAOSwxp9W4HQM/s-l1200.jpg"
                 },
                 new Movie
                 {
@@ -163,7 +166,7 @@ namespace IMDBClone.Data
                     ReleaseYear = 2013,
                     Director = "James Wan",
                     GenreId = 4,
-                    PosterUrl = "https://upload.wikimedia.org/wikipedia/en/1/1f/Conjuring_poster.jpg"
+                    PosterUrl = "https://musicart.xboxlive.com/7/8ac41100-0000-0000-0000-000000000002/504/image.jpg"
                 },
                 new Movie
                 {
@@ -183,7 +186,7 @@ namespace IMDBClone.Data
                     ReleaseYear = 2012,
                     Director = "Joss Whedon",
                     GenreId = 1,
-                    PosterUrl = "https://upload.wikimedia.org/wikipedia/en/f/f9/TheAvengers2012Poster.jpg"
+                    PosterUrl = "https://m.media-amazon.com/images/M/MV5BNGE0YTVjNzUtNzJjOS00NGNlLTgxMzctZTY4YTE1Y2Y1ZTU4XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"
                 },
                 new Movie
                 {
@@ -213,7 +216,7 @@ namespace IMDBClone.Data
                     ReleaseYear = 2001,
                     Director = "Andrew Adamson",
                     GenreId = 3,
-                    PosterUrl = "https://upload.wikimedia.org/wikipedia/en/3/39/Shrek.jpg"
+                    PosterUrl = "https://mediaproxy.tvtropes.org/width/1200/https://static.tvtropes.org/pmwiki/pub/images/shrek_cover.png"
                 },
                 new Movie
                 {

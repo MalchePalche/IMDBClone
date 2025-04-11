@@ -18,5 +18,72 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    background: linear-gradient(135deg, #1e1e2f, #3b3b98);
+    color: #ffffff;
+    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
+a, .nav-link {
+    color: #ffffff !important;
+    transition: color 0.3s ease;
+}
+
+    a:hover, .nav-link:hover {
+        color: #ffd369 !important;
+        text-decoration: none;
+    }
+
+.text-gradient {
+    background: linear-gradient(to right, #a855f7, #ec4899);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.navbar-nav .nav-link {
+    transition: all 0.2s ease-in-out;
+    color: #d1d5db;
+}
+
+    .navbar-nav .nav-link:hover {
+        color: #ffffff;
+        text-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+    }
+.glass-navbar {
+    background: rgba(30, 30, 30, 0.7) !important;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0.75rem 1rem;
+    z-index: 1000;
+}
+
+body {
+    padding-top: 80px; /* Prevent content from hiding behind nav */
+}
+.fade-in {
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card {
+    transition: transform 0.3s ease;
+}
+
+    .card:hover {
+        transform: translateY(-5px) scale(1.02);
+    }
+.carousel-item {
+    transition: transform 0.6s ease-in-out;
+}
+

@@ -3,9 +3,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace IMDBClone.Models
 {
-    public class FavoriteMovie
+    public class WatchlistItem
     {
-        [Key]
         public int Id { get; set; }
 
         [Required]
@@ -14,6 +13,7 @@ namespace IMDBClone.Models
         [Required]
         public int MovieId { get; set; }
 
+        // Navigation properties
         [ForeignKey("UserId")]
         public User User { get; set; }
 

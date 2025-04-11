@@ -1,21 +1,148 @@
 ﻿@{
-    ViewData["Title"] = "Home";
+    ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center mt-5">
-    <h1 class="display-4 mb-3">🎬 Welcome to <strong>IMDBClone</strong></h1>
-    <p class="lead mb-4">Explore your favorite movies, genres, and leave reviews like a real critic.</p>
-
-    <div class="d-flex justify-content-center gap-3">
-        <a class="btn btn-primary btn-lg" asp-controller="MoviesPage" asp-action="Index">
-            Browse Movies
-        </a>
-        <a class="btn btn-outline-secondary btn-lg" asp-controller="GenresPage" asp-action="Index">
-            Explore Genres
-        </a>
+<div class="container mt-5 fade-in">
+    <!-- Welcome Banner -->
+    <div class="text-center mb-5">
+        <h1 class="display-4 fw-bold text-light"><i class="bi bi-camera-reels"></i> Welcome to <span class="text-gradient">IMDBClone</span></h1>
+        <p class="lead text-light">Explore your favorite movies, genres, and leave reviews like a real critic.</p>
+        <a asp-controller="MoviesPage" asp-action="Index" class="btn btn-primary btn-lg">Browse Movies</a>
     </div>
 
-    <div class="mt-5">
-        <a href="/swagger" class="text-muted small">📜 Swagger API Docs</a>
+    <!-- Featured Movies Scroll -->
+    <div class="container mt-5 fade-in">
+        <h4 class="mb-3 text-white"><i class="bi bi-fire text-warning"></i> Featured Movies</h4>
+
+        <div class="position-relative overflow-hidden">
+            <div class="d-flex" id="carouselTrack" style="transition: transform 0.5s ease;">
+                <div class="featured-card">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/f/fc/Fight_Club_poster.jpg" class="card-img-top rounded" />
+                    <div class="mt-2">
+                        <h5 class="text-white">Fight Club</h5>
+                        <p class="text-muted small">An insomniac and a soap maker form a secret fight club.</p>
+                        <a href="#" class="btn btn-outline-light btn-sm">View</a>
+                    </div>
+                </div>
+                <div class="featured-card">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/0/0d/Avengers_Endgame_poster.jpg" class="card-img-top rounded" />
+                    <div class="mt-2">
+                        <h5 class="text-white">Avengers Endgame</h5>
+                        <p class="text-muted small">Avengers try to reverse Thanos' snap in Endgame.</p>
+                        <a href="#" class="btn btn-outline-light btn-sm">View</a>
+                    </div>
+                </div>
+                <div class="featured-card">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/8/87/StarWarsMoviePoster1977.jpg" class="card-img-top rounded" />
+                    <div class="mt-2">
+                        <h5 class="text-white">Star Wars: A New Hope</h5>
+                        <p class="text-muted small">Luke Skywalker joins a rebellion to fight the Empire.</p>
+                        <a href="#" class="btn btn-outline-light btn-sm">View</a>
+                    </div>
+                </div>
+                <div class="featured-card">
+                    <img src="@Html.Raw("https://m.media-amazon.com/images/M/MV5BYjdlNWFlZjEtM2U0NS00ZWU5LTk1M2EtZmQxNWFiZjk0MGM5XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg")" class="card-img-top rounded" />
+                    <div class="mt-2">
+                        <h5 class="text-white">John Wick 3</h5>
+                        <p class="text-muted small">John Wick is excommunicated and hunted by assassins.</p>
+                        <a href="#" class="btn btn-outline-light btn-sm">View</a>
+                    </div>
+                </div>
+                <div class="featured-card">
+                    <img src="@Html.Raw("https://m.media-amazon.com/images/M/MV5BYzdjMDAxZGItMjI2My00ODA1LTlkNzItOWFjMDU5ZDJlYWY3XkEyXkFqcGc@._V1_.jpg")" class="card-img-top rounded" />
+                    <div class="mt-2">
+                        <h5 class="text-white">Interstellar</h5>
+                        <p class="text-muted small">Astronauts travel through a wormhole to save Earth.</p>
+                        <a href="#" class="btn btn-outline-light btn-sm">View</a>
+                    </div>
+                </div>
+                <div class="featured-card">
+                    <img src="@Html.Raw("https://m.media-amazon.com/images/M/MV5BMjExMjkwNTQ0Nl5BMl5BanBnXkFtZTcwNTY0OTk1Mw@@._V1_.jpg")" class="card-img-top rounded" />
+                    <div class="mt-2">
+                        <h5 class="text-white">Inception</h5>
+                        <p class="text-muted small">A thief invades dreams to implant ideas or steal them.</p>
+                        <a href="#" class="btn btn-outline-light btn-sm">View</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Arrows -->
+            <button onclick="scrollCarousel(-1)" class="btn btn-dark position-absolute top-50 start-0 translate-middle-y">
+                <i class="bi bi-chevron-left"></i>
+            </button>
+            <button onclick="scrollCarousel(1)" class="btn btn-dark position-absolute top-50 end-0 translate-middle-y">
+                <i class="bi bi-chevron-right"></i>
+            </button>
+        </div>
+    </div>
+
+    <style>
+        .carousel-item {
+            transition: transform 0.6s ease-in-out;
+        }
+        .featured-card {
+            flex: 0 0 calc(100% / 3);
+            max-width: calc(100% / 3);
+            padding: 0 10px;
+            box-sizing: border-box;
+        }
+
+        @@media (max-width: 768px) {
+            .featured-card {
+                flex: 0 0 100%;
+                max-width: 100%;
+        }
+    }
+    </style>
+
+
+
+    <!-- Genres Overview -->
+    <div class="mb-5">
+        <h3 class="text-light mb-4">🎭 Browse by Genre</h3>
+        <div class="row row-cols-1 row-cols-md-5 g-3">
+            <div class="col">
+                <a asp-controller="GenresPage" asp-action="Index" class="btn btn-outline-light w-100">Action</a>
+            </div>
+            <div class="col">
+                <a asp-controller="GenresPage" asp-action="Index" class="btn btn-outline-light w-100">Comedy</a>
+            </div>
+            <div class="col">
+                <a asp-controller="GenresPage" asp-action="Index" class="btn btn-outline-light w-100">Drama</a>
+            </div>
+            <div class="col">
+                <a asp-controller="GenresPage" asp-action="Index" class="btn btn-outline-light w-100">Sci-Fi</a>
+            </div>
+            <div class="col">
+                <a asp-controller="GenresPage" asp-action="Index" class="btn btn-outline-light w-100">Horror</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Call to Action -->
+    <div class="text-center py-5">
+        <h4 class="text-light">Not registered yet?</h4>
+        <a asp-area="Identity" asp-page="/Account/Register" class="btn btn-success btn-lg mt-2">Create an Account</a>
     </div>
 </div>
+
+@section Scripts {
+    <script>
+        let scrollIndex = 0;
+
+        function scrollCarousel(direction) {
+            const card = document.querySelector(".featured-card");
+            const track = document.getElementById("carouselTrack");
+            const totalCards = track.children.length;
+
+            scrollIndex += direction;
+
+            // Loop if out of bounds
+            if (scrollIndex < 0) scrollIndex = totalCards - 3;
+            if (scrollIndex > totalCards - 3) scrollIndex = 0;
+
+            const scrollAmount = card.offsetWidth * scrollIndex;
+            track.style.transform = `translateX(-${scrollAmount}px)`;
+        }
+    </script>
+}
