@@ -8,5 +8,8 @@ namespace IMDBClone.ViewModels
         public Movie Movie { get; set; }
         public string GenreName { get; set; }
         public List<ReviewDisplayViewModel> Reviews { get; set; }
+        public string Actors { get; set; }
+        public string TrailerUrl { get; set; }
+
     }
 }

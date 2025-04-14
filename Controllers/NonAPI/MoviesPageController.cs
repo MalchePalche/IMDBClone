@@ -56,8 +56,23 @@ namespace IMDBClone.NonAPI
                     UserName = r.User?.UserName ?? "Unknown"
                 }).ToList()
             };
+            return View(new MovieDetailsViewModel
+            {
+                Movie = movie,
+                GenreName = movie.Genre?.Name,
+                Reviews = movie.Reviews?
+                .Select(r => new ReviewDisplayViewModel
+                {
+                    Rating = r.Rating,
+                    Comment = r.Comment,
+                    UserName = r.User?.UserName ?? "Unknown"
+                }).ToList(),
+                Actors = movie.Actors,
+                TrailerUrl = movie.TrailerUrl
+            });
 
-            return View(viewModel);
+
+            
         }
 
 

@@ -26,6 +26,8 @@ namespace IMDBClone.Models
         public ICollection<Review> Reviews { get; set; }
         public string PosterUrl { get; set; } = string.Empty;
 
+        public string Actors { get; set; } = string.Empty; // comma-separated names
+        public string TrailerUrl { get; set; } = string.Empty; // YouTube embed or link
 
 
     }

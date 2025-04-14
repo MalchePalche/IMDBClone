@@ -4,11 +4,15 @@
     ViewData["Title"] = "Genres";
 }
 
-<h1>Genres</h1>
+<h1 class="text-light">Genres</h1>
 
-<ul>
+<ul class="list-group">
     @foreach (var genre in Model)
     {
-        <li>@genre.Name</li>
+        <li class="list-group-item">
+            <a asp-action="MoviesByGenre" asp-route-id="@genre.Id" class="text-decoration-none">
+                @genre.Name
+            </a>
+        </li>
     }
 </ul>

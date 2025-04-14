@@ -18,5 +18,21 @@ namespace IMDBClone.NonAPI
             var genres = await _context.Genres.ToListAsync();
             return View(genres);
         }
+        public async Task<IActionResult> MoviesByGenre(int id)
+        {
+            var genre = await _context.Genres.FindAsync(id);
+            if (genre == null)
+            {
+                return NotFound();
+            }
+
+            var movies = await _context.Movies
+                .Where(m => m.GenreId == id)
+                .ToListAsync();
+
+            ViewBag.GenreName = genre.Name;
+            return View(movies);
+        }
+
     }
 }
