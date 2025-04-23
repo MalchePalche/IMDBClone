@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace IMDBClone.NonAPI
 {
-    [Authorize]
+    [Authorize/*(Roles = "User,Admin")*/]
     [Route("[controller]/[action]")]
     public class WatchlistController : Controller
     {

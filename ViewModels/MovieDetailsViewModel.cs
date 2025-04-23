@@ -10,6 +10,8 @@ namespace IMDBClone.ViewModels
         public List<ReviewDisplayViewModel> Reviews { get; set; }
         public string Actors { get; set; }
         public string TrailerUrl { get; set; }
+        public bool IsInWatchlist { get; set; }
+
 
     }
 }

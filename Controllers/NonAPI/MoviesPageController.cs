@@ -45,17 +45,30 @@ namespace IMDBClone.NonAPI
 
             if (movie == null) return NotFound();
 
+            var user = await _userManager.GetUserAsync(User);
+            bool isInWatchlist = false;
+
+            if (user != null)
+            {
+                isInWatchlist = await _context.FavoriteMovies
+                    .AnyAsync(f => f.UserId == user.Id && f.MovieId == movie.Id);
+            }
+
             var viewModel = new MovieDetailsViewModel
             {
                 Movie = movie,
-                GenreName = movie.Genre?.Name ?? "Unknown",
-                Reviews = movie.Reviews.Select(r => new ReviewDisplayViewModel
+                GenreName = movie.Genre?.Name ?? "N/A",
+                Reviews = movie.Reviews?.Select(r => new ReviewDisplayViewModel
                 {
+                    UserName = r.User?.UserName ?? "Unknown",
                     Rating = r.Rating,
-                    Comment = r.Comment,
-                    UserName = r.User?.UserName ?? "Unknown"
-                }).ToList()
+                    Comment = r.Comment
+                }).ToList() ?? new List<ReviewDisplayViewModel>(),
+                Actors = movie.Actors,
+                TrailerUrl = movie.TrailerUrl,
+                IsInWatchlist = isInWatchlist
             };
+
             return View(new MovieDetailsViewModel
             {
                 Movie = movie,

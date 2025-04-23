@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services
+// Database
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// ✅ Identity (with Roles)
+// Identity with roles
 builder.Services.AddDefaultIdentity<User>(options =>
 {
     options.SignIn.RequireConfirmedAccount = false;
@@ -19,11 +19,10 @@ builder.Services.AddDefaultIdentity<User>(options =>
 .AddRoles<IdentityRole>()
 .AddEntityFrameworkStores<ApplicationDbContext>();
 
-
-// ✅ Register the fake email sender (required by Register page)
+// Fake email sender
 builder.Services.AddTransient<IEmailSender, FakeEmailSender>();
 
-// ✅ Configure login/logout paths
+// Cookie paths
 builder.Services.ConfigureApplicationCookie(options =>
 {
     options.LoginPath = "/Identity/Account/Login";
@@ -33,9 +32,13 @@ builder.Services.ConfigureApplicationCookie(options =>
 
 builder.Services.AddAuthorization();
 
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("AdminOnly", policy => policy.RequireRole("Admin"));
+});
+
 builder.Services.AddControllersWithViews()
     .AddApplicationPart(typeof(IMDBClone.NonAPI.MoviesPageController).Assembly);
-
 builder.Services.AddRazorPages();
 
 builder.Services.AddEndpointsApiExplorer();
@@ -43,7 +46,7 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// ✅ Seed Roles & Admin User
+// ✅ Seed Roles and Admin user
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
@@ -53,45 +56,51 @@ using (var scope = app.Services.CreateScope())
 
     context.Database.Migrate();
 
-    // Seed Roles
-    if (!context.Roles.Any())
+    // Create roles
+    string[] roles = { "Admin", "User" };
+    foreach (var role in roles)
     {
-        roleManager.CreateAsync(new IdentityRole("Admin")).Wait();
-        roleManager.CreateAsync(new IdentityRole("User")).Wait();
+        if (!await roleManager.RoleExistsAsync(role))
+        {
+            await roleManager.CreateAsync(new IdentityRole(role));
+        }
     }
 
-    // Seed Admin User
-    if (!context.Users.Any(u => u.UserName == "admin"))
+    // FORCE RE-CREATE ADMIN USER
+    var adminEmail = "admin@imdbclone.com";
+    var existingUser = await userManager.FindByEmailAsync(adminEmail);
+    if (existingUser != null)
     {
-        var adminUser = new User
-        {
-            Id = "6F9619FF-8B86-D011-B42D-00C04FC964FF",
-            UserName = "admin",
-            Email = "admin@imdbclone.com",
-            NormalizedUserName = "ADMIN",
-            NormalizedEmail = "ADMIN@IMDBCLONE.COM",
-            EmailConfirmed = true
-        };
+        await userManager.DeleteAsync(existingUser); // 💥 Force delete if exists
+    }
 
-        var passwordHasher = new PasswordHasher<User>();
-        adminUser.PasswordHash = passwordHasher.HashPassword(adminUser, "Admin123!");
+    var adminUser = new User
+    {
+        UserName = adminEmail,
+        Email = adminEmail,
+        EmailConfirmed = true
+    };
 
-        userManager.CreateAsync(adminUser).Wait();
-        userManager.AddToRoleAsync(adminUser, "Admin").Wait();
+    var result = await userManager.CreateAsync(adminUser, "Admin123!");
+    if (result.Succeeded)
+    {
+        await userManager.AddToRoleAsync(adminUser, "Admin");
+        await userManager.AddToRoleAsync(adminUser, "User");
     }
 }
 
+
 app.UseAuthentication();
 app.UseAuthorization();
-
 app.UseSwagger();
 app.UseSwaggerUI();
-
 app.MapControllers();
-app.MapRazorPages();
-
+app.MapControllerRoute(
+    name: "areas",
+    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
+app.MapRazorPages();
 app.Run();
