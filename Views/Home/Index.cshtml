@@ -57,6 +57,47 @@
         }
     </style>
 
+    <!--Join Convo CTA-->
+    <div class="conversation-cta text-center mt-5 p-4 rounded">
+        <h3>⭐ Haven’t rated anything yet?</h3>
+        <p>Click below to start reviewing like a true critic!</p>
+        <a href="/MoviesPage" class="btn btn-warning btn-lg mt-2">Browse Movies</a>
+    </div>
+
+    <!--Movie of the Day-->
+    @if (ViewBag.MovieOfTheDay != null)
+    {
+        var motd = (IMDBClone.Models.Movie)ViewBag.MovieOfTheDay;
+        <div class="movie-of-day text-center mt-5 p-4 rounded">
+            <h3>🎬 Movie of the Day</h3>
+            <img src="@motd.PosterUrl" alt="@motd.Title" class="img-fluid rounded shadow" style="max-height: 300px;" />
+            <h4 class="mt-3">@motd.Title</h4>
+            <p>@motd.Description</p>
+            <a href="/MoviesPage/Details/@motd.Id" class="btn btn-outline-light mt-2">See More</a>
+        </div>
+    }
+
+    <!--Fun Stats-->
+    <div class="fun-stats text-center mt-5 p-4 rounded">
+        <h3>📊 Site Stats</h3>
+        <div class="row mt-3">
+            <div class="col-md-4">
+                <h4>🎬 Movies</h4>
+                <p>@ViewBag.TotalMovies</p>
+            </div>
+            <div class="col-md-4">
+                <h4>👥 Users</h4>
+                <p>@ViewBag.TotalUsers</p>
+            </div>
+            <div class="col-md-4">
+                <h4>⭐ Avg. Rating</h4>
+                <p>@ViewBag.AverageRating</p>
+            </div>
+        </div>
+    </div>
+
+
+
     <!-- Call to Action -->
     <div class="text-center py-5">
         <h4 class="text-light">Not registered yet?</h4>

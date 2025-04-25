@@ -123,3 +123,26 @@ a, .nav-link {
     .card.bg-white ::placeholder {
         color: #6c757d !important;
     }
+
+.conversation-cta {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #ffffff;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+.movie-of-day {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #ffffff;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+}
+
+.fun-stats {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #ffffff;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+}
+
+    .fun-stats h4 {
+        margin-bottom: 0.5rem;
+        color: #ffd700;
+    }

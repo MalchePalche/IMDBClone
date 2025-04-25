@@ -20,14 +20,39 @@ namespace IMDBClone.Controllers
 
         public IActionResult Index()
         {
-            // Pick 6 featured movies from the DB (adjust criteria as needed)
+            // Featured Movies
             var featuredMovies = _context.Movies
                 .Include(m => m.Genre)
                 .Take(6)
                 .ToList();
 
+            // Movie of the Day
+            var totalMovies = _context.Movies.Count();
+            Movie movieOfTheDay = null;
+
+            if (totalMovies > 0)
+            {
+                var random = new Random();
+                int skip = random.Next(0, totalMovies);
+                movieOfTheDay = _context.Movies
+                    .Include(m => m.Genre)
+                    .Skip(skip)
+                    .Take(1)
+                    .FirstOrDefault();
+            }
+
+            // Fun Stats
+            var totalUsers = _context.Users.Count();
+            var avgRating = _context.Reviews.Any() ? _context.Reviews.Average(r => r.Rating) : 0;
+
+            ViewBag.MovieOfTheDay = movieOfTheDay;
+            ViewBag.TotalMovies = totalMovies;
+            ViewBag.TotalUsers = totalUsers;
+            ViewBag.AverageRating = Math.Round(avgRating, 1);
+            
             return View(featuredMovies);
         }
+
 
         public IActionResult Privacy()
         {
