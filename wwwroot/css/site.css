@@ -1,29 +1,27 @@
-html {
-  font-size: 14px;
+﻿html {
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+    html {
+        font-size: 16px;
+    }
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-    background: linear-gradient(135deg, #1e1e2f, #3b3b98);
+    background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
     color: #ffffff;
     min-height: 100vh;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding-top: 80px;
 }
 
+/* Typography and Links */
 a, .nav-link {
     color: #ffffff !important;
     transition: color 0.3s ease;
@@ -35,13 +33,13 @@ a, .nav-link {
     }
 
 .text-gradient {
-    background: linear-gradient(to right, #a855f7, #ec4899);
+    background: linear-gradient(to right, #ff9966, #ff5e62);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
+/* Navbar */
 .navbar-nav .nav-link {
-    transition: all 0.2s ease-in-out;
     color: #d1d5db;
 }
 
@@ -49,17 +47,25 @@ a, .nav-link {
         color: #ffffff;
         text-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
     }
+
 .glass-navbar {
-    background: rgba(30, 30, 30, 0.7) !important;
+    background: rgba(15, 32, 39, 0.85) !important;
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.1);
     padding: 0.75rem 1rem;
     z-index: 1000;
 }
 
-body {
-    padding-top: 80px;  
+/* Buttons */
+.btn, .form-control, .form-select {
+    border-radius: 6px;
 }
+
+    .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+        box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+    }
+
+/* Animation */
 .fade-in {
     animation: fadeIn 1s ease-in-out;
 }
@@ -76,14 +82,44 @@ body {
     }
 }
 
+/* Cards */
 .card {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: white;
     transition: transform 0.3s ease;
 }
 
     .card:hover {
         transform: translateY(-5px) scale(1.02);
     }
+
+/* Carousel */
 .carousel-item {
     transition: transform 0.6s ease-in-out;
 }
 
+.movies-header {
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+}
+/* Fix text color ONLY for white background cards (e.g. Review form) */
+/* 🔧 Force readable text inside white cards */
+.card.bg-white,
+.card.bg-white * {
+    color: #212529 !important;
+}
+
+    .card.bg-white .form-control,
+    .card.bg-white .form-select,
+    .card.bg-white textarea {
+        background-color: #ffffff;
+        color: #212529 !important;
+        border-color: #ced4da;
+    }
+
+    .card.bg-white ::placeholder {
+        color: #6c757d !important;
+    }

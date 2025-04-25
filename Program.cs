@@ -90,14 +90,19 @@ using (var scope = app.Services.CreateScope())
 }
 
 
+app.UseStaticFiles();
+app.UseRouting();
+
 app.UseAuthentication();
 app.UseAuthorization();
+
 app.UseSwagger();
 app.UseSwaggerUI();
-app.MapControllers();
+
 app.MapControllerRoute(
     name: "areas",
     pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");

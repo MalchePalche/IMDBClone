@@ -17,7 +17,7 @@ namespace IMDBClone.Models
         public User User { get; set; }
 
         [Required]
-        [Range(1, 10)]
+        [Range(1, 5, ErrorMessage = "Rating must be between 1 and 5 stars.")]
         public int Rating { get; set; }
 
         [Required]
