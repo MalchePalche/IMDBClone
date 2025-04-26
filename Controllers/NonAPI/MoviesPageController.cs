@@ -60,6 +60,7 @@ namespace IMDBClone.NonAPI
                 GenreName = movie.Genre?.Name ?? "N/A",
                 Reviews = movie.Reviews?.Select(r => new ReviewDisplayViewModel
                 {
+                    Id = r.Id, // ✅ This is what allows delete to work
                     UserName = r.User?.UserName ?? "Unknown",
                     Rating = r.Rating,
                     Comment = r.Comment
@@ -69,24 +70,9 @@ namespace IMDBClone.NonAPI
                 IsInWatchlist = isInWatchlist
             };
 
-            return View(new MovieDetailsViewModel
-            {
-                Movie = movie,
-                GenreName = movie.Genre?.Name,
-                Reviews = movie.Reviews?
-                .Select(r => new ReviewDisplayViewModel
-                {
-                    Rating = r.Rating,
-                    Comment = r.Comment,
-                    UserName = r.User?.UserName ?? "Unknown"
-                }).ToList(),
-                Actors = movie.Actors,
-                TrailerUrl = movie.TrailerUrl
-            });
-
-
-            
+            return View(viewModel); // ✅ return the view model with Ids included
         }
+
 
 
         [HttpPost]
@@ -95,7 +81,13 @@ namespace IMDBClone.NonAPI
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-            if (movieId <= 0 || string.IsNullOrWhiteSpace(userId) || rating < 1 || rating > 10 || string.IsNullOrWhiteSpace(comment))
+            if (string.IsNullOrWhiteSpace(userId))
+            {
+                Console.WriteLine("❌ Review failed: user not logged in.");
+                return Unauthorized();
+            }
+
+            if (movieId <= 0 || rating < 1 || rating > 10 || string.IsNullOrWhiteSpace(comment))
             {
                 Console.WriteLine("❌ Invalid review submission:");
                 Console.WriteLine($"MovieId={movieId}, UserId='{userId}', Rating={rating}, Comment='{comment}'");
@@ -107,14 +99,35 @@ namespace IMDBClone.NonAPI
                 MovieId = movieId,
                 UserId = userId,
                 Rating = rating,
-                Comment = comment
+                Comment = comment,
+                CreatedAt = DateTime.UtcNow
             };
+            Console.WriteLine($"Current logged-in UserId: {userId}");
 
             _context.Reviews.Add(review);
             await _context.SaveChangesAsync();
 
             return RedirectToAction("Details", new { id = movieId });
         }
+
+
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        public IActionResult DeleteReview(int id)
+        {
+            var review = _context.Reviews.Find(id);
+            if (review == null)
+                return NotFound();
+
+            var movieId = review.MovieId;
+
+            _context.Reviews.Remove(review);
+            _context.SaveChanges();
+
+            return RedirectToAction("Details", new { id = movieId });
+        }
+
+
         [HttpPost]
         public async Task<IActionResult> AddToWatchlist(int movieId)
         {
