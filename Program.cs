@@ -30,8 +30,7 @@ builder.Services.ConfigureApplicationCookie(options =>
     options.AccessDeniedPath = "/Identity/Account/AccessDenied";
 });
 
-builder.Services.AddAuthorization();
-
+// Authorization
 builder.Services.AddAuthorization(options =>
 {
     options.AddPolicy("AdminOnly", policy => policy.RequireRole("Admin"));
@@ -46,7 +45,7 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// ✅ Seed Roles and Admin user
+// ✅ Seed Roles and Admin user properly
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
@@ -66,29 +65,29 @@ using (var scope = app.Services.CreateScope())
         }
     }
 
-    // FORCE RE-CREATE ADMIN USER
+    // Create Admin user if it doesn't exist
     var adminEmail = "admin@imdbclone.com";
-    var existingUser = await userManager.FindByEmailAsync(adminEmail);
-    if (existingUser != null)
-    {
-        await userManager.DeleteAsync(existingUser); // 💥 Force delete if exists
-    }
+    var adminPassword = "Admin123!";
 
-    var adminUser = new User
-    {
-        UserName = adminEmail,
-        Email = adminEmail,
-        EmailConfirmed = true
-    };
+    var adminUser = await userManager.FindByEmailAsync(adminEmail);
 
-    var result = await userManager.CreateAsync(adminUser, "Admin123!");
-    if (result.Succeeded)
+    if (adminUser == null)
     {
-        await userManager.AddToRoleAsync(adminUser, "Admin");
-        await userManager.AddToRoleAsync(adminUser, "User");
+        adminUser = new User
+        {
+            UserName = adminEmail,
+            Email = adminEmail,
+            EmailConfirmed = true
+        };
+
+        var result = await userManager.CreateAsync(adminUser, adminPassword);
+        if (result.Succeeded)
+        {
+            await userManager.AddToRoleAsync(adminUser, "Admin");
+            await userManager.AddToRoleAsync(adminUser, "User");
+        }
     }
 }
-
 
 app.UseStaticFiles();
 app.UseRouting();

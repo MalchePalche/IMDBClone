@@ -81,14 +81,15 @@
                                 <br />
                                 <span class="fst-italic">@review.Comment</span>
                             </div>
-
                             @if (User.IsInRole("Admin"))
                             {
-                                <form asp-controller="MoviesPage" asp-action="DeleteReview" asp-route-id="@review.Id" method="post" class="ms-2">
-                                    <button type="submit" class="btn btn-sm btn-danger">❌</button>
+                                <form asp-controller="MoviesPage" asp-action="DeleteReview" asp-route-id="@review.Id" method="post" class="d-inline" onsubmit="return confirm('Are you sure you want to permanently delete this review?');">
+                                    <button type="submit" class="btn btn-sm btn-danger ms-2">❌</button>
                                 </form>
-
                             }
+
+
+                            
                         </li>
                     }
 
