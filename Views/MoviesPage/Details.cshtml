@@ -41,7 +41,13 @@
             <div class="card-body">
                 <h4 class="mb-3">🎬 Official Trailer</h4>
                 <div class="ratio ratio-16x9">
-                    <iframe src="@Model.TrailerUrl" title="Trailer for @Model.Movie.Title" allowfullscreen></iframe>
+                    @{
+                        var embedUrl = Model.TrailerUrl?.Replace("watch?v=", "embed/");
+                    }
+                    <div class="ratio ratio-16x9">
+                        <iframe src="@embedUrl" title="Trailer for @Model.Movie.Title" allowfullscreen></iframe>
+                    </div>
+
                 </div>
             </div>
         </div>

@@ -20,9 +20,26 @@ namespace IMDBClone.NonAPI
             _userManager = userManager;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string title, int? genreId, int? releaseYear, string director, string actor)
         {
-            var movies = await _context.Movies.Include(m => m.Genre).ToListAsync();
+            var query = _context.Movies.Include(m => m.Genre).AsQueryable();
+
+            if (!string.IsNullOrEmpty(title))
+                query = query.Where(m => m.Title.Contains(title));
+
+            if (genreId.HasValue)
+                query = query.Where(m => m.GenreId == genreId.Value);
+
+            if (releaseYear.HasValue)
+                query = query.Where(m => m.ReleaseYear == releaseYear.Value);
+
+            if (!string.IsNullOrEmpty(director))
+                query = query.Where(m => m.Director.Contains(director));
+
+            if (!string.IsNullOrEmpty(actor))
+                query = query.Where(m => m.Actors.Contains(actor));
+
+            var movies = await query.ToListAsync();
             var userId = _userManager.GetUserId(User);
 
             var userWatchlist = await _context.FavoriteMovies
@@ -32,8 +49,19 @@ namespace IMDBClone.NonAPI
 
             ViewBag.Watchlist = userWatchlist;
 
+            // Pass genres and years for dropdowns
+            ViewBag.Genres = await _context.Genres.ToListAsync();
+            ViewBag.ReleaseYears = await _context.Movies
+                .Where(m => m.ReleaseYear.HasValue)
+                .Select(m => m.ReleaseYear.Value)
+                .Distinct()
+                .OrderByDescending(y => y)
+                .ToListAsync();
+
+
             return View(movies);
         }
+
 
         public async Task<IActionResult> Details(int id)
         {

@@ -155,3 +155,43 @@ a, .nav-link {
     .btn-danger:hover {
         background-color: #bd2130;
     }
+
+/* GLOBAL button override */
+
+    .btn-primary,
+    .btn-success,
+    .btn-warning,
+    .btn-danger,
+    .btn-outline-primary,
+    .btn-outline-success,
+    .btn-outline-warning,
+    .btn-outline-danger {
+        background-color: #1d9bf0 !important;
+        border-color: #1d9bf0 !important;
+        color: white !important;
+        font-weight: bold;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .btn-primary:hover,
+    .btn-success:hover,
+    .btn-warning:hover,
+    .btn-danger:hover,
+    .btn-outline-primary:hover,
+    .btn-outline-success:hover,
+    .btn-outline-warning:hover,
+    .btn-outline-danger:hover {
+        background-color: #339af0 !important;
+        border-color: #339af0 !important;
+        transform: scale(1.03);
+        color: white !important;
+    }
+
+/*for .btn-danger*/
+ /*{
+    background-color: #d1d5db !important;
+    border-color: #d1d5db !important;
+    color: black !important;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}*/
