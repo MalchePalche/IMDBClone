@@ -369,6 +369,378 @@ namespace IMDBClone.Data
                     PosterUrl = "https://upload.wikimedia.org/wikipedia/en/f/fc/Fight_Club_poster.jpg",
                     Actors = "Brad Pitt, Edward Norton, Helena Bonham Carter",
                     TrailerUrl = "https://www.youtube.com/watch?v=qtRKdVHc-cE"
+                },
+                new Movie
+                {
+                    Id = 27,
+                    Title = "Whiplash",
+                    Description = "A young drummer enrolls in a cut-throat music conservatory where his dreams of greatness are mentored by an abusive instructor.",
+                    ReleaseYear = 2014,
+                    Director = "Damien Chazelle",
+                    GenreId = 2,
+                    PosterUrl = "https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p10488558_p_v12_ai.jpg",
+                    Actors = "Miles Teller, J.K. Simmons, Paul Reiser",
+                    TrailerUrl = "https://www.youtube.com/watch?v=7d_jQycdQGo"
+                },
+                new Movie
+                {
+                    Id = 28,
+                    Title = "The Prestige",
+                    Description = "Two stage magicians engage in a bitter rivalry to create the ultimate illusion.",
+                    ReleaseYear = 2006,
+                    Director = "Christopher Nolan",
+                    GenreId = 5,
+                    PosterUrl = "https://m.media-amazon.com/images/M/MV5BMjA4NDI0MTIxNF5BMl5BanBnXkFtZTYwNTM0MzY2._V1_FMjpg_UX1000_.jpg",
+                    Actors = "Christian Bale, Hugh Jackman, Scarlett Johansson",
+                    TrailerUrl = "https://www.youtube.com/watch?v=RLtaA9fFNXU"
+                },
+                new Movie
+                {
+                    Id = 29,
+                    Title = "Django Unchained",
+                    Description = "A freed slave sets out to rescue his wife from a brutal Mississippi plantation owner.",
+                    ReleaseYear = 2012,
+                    Director = "Quentin Tarantino",
+                    GenreId = 1,
+                    PosterUrl = "https://m.media-amazon.com/images/M/MV5BMjIyNTQ5NjQ1OV5BMl5BanBnXkFtZTcwODg1MDU4OA@@._V1_.jpg",
+                    Actors = "Jamie Foxx, Christoph Waltz, Leonardo DiCaprio",
+                    TrailerUrl = "https://www.youtube.com/watch?v=0fUCuvNlOCg"
+                },
+                new Movie
+                {
+                    Id = 30,
+                    Title = "The Departed ",
+                    Description = "An undercover cop and a mole in the police try to identify each other while infiltrating an Irish gang.",
+                    ReleaseYear = 2006,
+                    Director = "Martin Scorsese",
+                    GenreId = 2,
+                    PosterUrl = "https://m.media-amazon.com/images/M/MV5BMTI1MTY2OTIxNV5BMl5BanBnXkFtZTYwNjQ4NjY3._V1_FMjpg_UX1000_.jpg",
+                    Actors = "Leonardo DiCaprio, Matt Damon, Jack Nicholson",
+                    TrailerUrl = "https://www.youtube.com/watch?v=r-MiSNsCdQ4"
+                },
+                new Movie
+                {
+                    Id = 31,
+                    Title = "The Pianist ",
+                    Description = "A Polish Jewish musician struggles to survive the destruction of the Warsaw ghetto during World War II.",
+                    ReleaseYear = 2002,
+                    Director = "Roman Polanski",
+                    GenreId = 2,
+                    PosterUrl = "https://m.media-amazon.com/images/M/MV5BMjEwNmEwYjgtNTk3ZC00NjljLTg5ZDctZTY3ZGQwZjRkZmQxXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+                    Actors = "Adrien Brody, Thomas Kretschmann, Frank Finlay",
+                    TrailerUrl = "https://www.youtube.com/watch?v=BFwGqLa_oAo"
+                },
+                new Movie
+                {
+                    Id = 32,
+                    Title = "The Green Mile",
+                    Description = "A death row corrections officer forms a bond with a mysterious inmate.",
+                    ReleaseYear = 1999,
+                    Director = "Frank Darabont",
+                    GenreId = 2,
+                    PosterUrl = "https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p24429_p_v12_bf.jpg",
+                    Actors = "Tom Hanks, Michael Clarke Duncan, David Morse",
+                    TrailerUrl = "https://www.youtube.com/watch?v=Ki4haFrqSrw"
+                },
+                new Movie
+                {
+                    Id = 33,
+                    Title = "The Wolf of Wall Street ",
+                    Description = "Based on the true story of Jordan Belfort, from his rise to a wealthy stockbroker to his fall involving crime and corruption.",
+                    ReleaseYear = 2013,
+                    Director = "Martin Scorsese",
+                    GenreId = 2,
+                    PosterUrl = "https://m.media-amazon.com/images/M/MV5BMjIxMjgxNTk0MF5BMl5BanBnXkFtZTgwNjIyOTg2MDE@._V1_.jpg",
+                    Actors = "Leonardo DiCaprio, Jonah Hill, Margot Robbie",
+                    TrailerUrl = "https://www.youtube.com/watch?v=iszwuX1AK6A"
+                },
+                new Movie
+                {
+                    Id = 34,
+                    Title = "Shutter Island",
+                    Description = "A U.S. Marshal investigates the disappearance of a patient from a mental hospital.",
+                    ReleaseYear = 2010,
+                    Director = "Martin Scorsese",
+                    GenreId = 2,
+                    PosterUrl = "https://m.media-amazon.com/images/M/MV5BN2FjNWExYzEtY2YzOC00YjNlLTllMTQtNmIwM2Q1YzBhOWM1XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+                    Actors = "Leonardo DiCaprio, Mark Ruffalo, Ben Kingsley",
+                    TrailerUrl = "https://www.youtube.com/watch?v=v8yrZSkKxTA"
+                },
+                new Movie
+                {
+                    Id = 35,
+                    Title = "The Lion King (1994)",
+                    Description = "Lion prince Simba flees his kingdom after the death of his father, only to learn the true meaning of responsibility and bravery.",
+                    ReleaseYear = 1994,
+                    Director = "Roger Allers, Rob Minkoff",
+                    GenreId = 2,
+                    PosterUrl = "https://m.media-amazon.com/images/M/MV5BZGRiZDZhZjItM2M3ZC00Y2IyLTk3Y2MtMWY5YjliNDFkZTJlXkEyXkFqcGc@._V1_.jpg",
+                    Actors = "Matthew Broderick, Jeremy Irons, James Earl Jones",
+                    TrailerUrl = "https://www.youtube.com/watch?v=lFzVJEksoDY"
+                },
+                new Movie
+                {
+                    Id = 36,
+                    Title = "The Truman Show ",
+                    Description = "An insurance salesman discovers his whole life is actually a reality TV show.",
+                    ReleaseYear = 1998,
+                    Director = "Peter Weir",
+                    GenreId = 2,
+                    PosterUrl = "https://m.media-amazon.com/images/M/MV5BNzA3ZjZlNzYtMTdjMy00NjMzLTk5ZGYtMTkyYzNiOGM1YmM3XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+                    Actors = "Jim Carrey, Ed Harris, Laura Linney",
+                    TrailerUrl = "https://www.youtube.com/watch?v=dlnmQbPGuls"
+                },
+                new Movie
+                {
+                    Id = 37,
+                    Title = "Once Upon a Time in Hollywood",
+                    Description = "A faded television actor and his stunt double strive to achieve fame during Hollywood’s Golden Age.",
+                    ReleaseYear = 2019,
+                    Director = "Quentin Tarantino",
+                    GenreId = 2,
+                    PosterUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTij6IZWfKRuCG4tUJ-yMbqOy25SC0dlFYVTQ&s",
+                    Actors = "Leonardo DiCaprio, Brad Pitt, Margot Robbie",
+                    TrailerUrl = "https://www.youtube.com/watch?v=ELeMaP8EPAA"
+                },
+                new Movie
+                {
+                    Id = 38,
+                    Title = "Ford Vs Ferrari ",
+                    Description = "American car designer Carroll Shelby and driver Ken Miles battle corporate interference to build a revolutionary race car.",
+                    ReleaseYear = 2019,
+                    Director = "James Mangold",
+                    GenreId = 1,
+                    PosterUrl = "https://m.media-amazon.com/images/M/MV5BOTBjNTEyNjYtYjdkNi00YzE5LTljYzUtZjVlYmYwZmJmZWYxXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+                    Actors = "Matt Damon, Christian Bale, Jon Bernthal",
+                    TrailerUrl = "https://www.youtube.com/watch?v=zyYgDtY2AMY"
+                },
+                new Movie
+                {
+                    Id = 39,
+                    Title = "Coco",
+                    Description = "Aspiring musician Miguel enters the Land of the Dead to seek his great-great-grandfather.",
+                    ReleaseYear = 2017,
+                    Director = "Lee Unkrich, Adrian Molina",
+                    GenreId = 2,
+                    PosterUrl = "https://m.media-amazon.com/images/M/MV5BMDIyM2E2NTAtMzlhNy00ZGUxLWI1NjgtZDY5MzhiMDc5NGU3XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+                    Actors = "Anthony Gonzalez, Gael García Bernal, Benjamin Bratt",
+                    TrailerUrl = "https://www.youtube.com/watch?v=xlnPHQ3TLX8"
+                },
+                new Movie
+                {
+                    Id = 40,
+                    Title = "Up",
+                    Description = "An old man ties thousands of balloons to his house and flies to South America, inadvertently taking a young boy with him.",
+                    ReleaseYear = 2009,
+                    Director = "Pete Docter, Bob Peterson",
+                    GenreId = 3,
+                    PosterUrl = "https://m.media-amazon.com/images/I/81JOqsD2NmL._AC_UF894,1000_QL80_.jpg",
+                    Actors = "Edward Asner, Jordan Nagai, John Ratzenberger",
+                    TrailerUrl = "https://www.youtube.com/watch?v=HWEW_qTLSEE"
+                },
+                new Movie
+                {
+                    Id = 41,
+                    Title = "Ratatouille",
+                    Description = "A rat with a passion for cooking makes an unusual alliance with a young kitchen worker.",
+                    ReleaseYear = 2007,
+                    Director = "Brad Bird, Jan Pinkava",
+                    GenreId = 3,
+                    PosterUrl = "https://resizing.flixster.com/ySiX7RlyKRuuxCcAI7SgdkMAZ0U=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzLzc4ZmJhZjZiLTEzNWMtNDIwOC1hYzU1LTgwZjE3ZjQzNTdiNy5qcGc=",
+                    Actors = "Patton Oswalt, Ian Holm, Lou Romano",
+                    TrailerUrl = "https://www.youtube.com/watch?v=NgsQ8mVkN8w"
+                },
+                new Movie
+                {
+                    Id = 42,
+                    Title = "Spirited Away",
+                    Description = "A 10-year-old girl must save her parents in a world of spirits and gods.",
+                    ReleaseYear = 2001,
+                    Director = "Hayao Miyazaki",
+                    GenreId = 2,
+                    PosterUrl = "https://m.media-amazon.com/images/M/MV5BNTEyNmEwOWUtYzkyOC00ZTQ4LTllZmUtMjk0Y2YwOGUzYjRiXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+                    Actors = "Rumi Hiiragi, Miyu Irino, Mari Natsuki",
+                    TrailerUrl = "https://www.youtube.com/watch?v=ByXuk9QqQkk"
+                },
+                new Movie
+                {
+                    Id = 43,
+                    Title = "1917",
+                    Description = "Two British soldiers are tasked with delivering a critical message to save 1,600 men.",
+                    ReleaseYear = 2019,
+                    Director = "Sam Mendes",
+                    GenreId = 1,
+                    PosterUrl = "https://m.media-amazon.com/images/M/MV5BYzkxZjg2NDQtMGVjMy00NWZkLTk0ZDEtZWE3NDYwYjAyMTg1XkEyXkFqcGc@._V1_.jpg",
+                    Actors = "George MacKay, Dean-Charles Chapman, Mark Strong",
+                    TrailerUrl = "https://www.youtube.com/watch?v=YqNYrYUiMfg"
+                },
+                new Movie
+                {
+                    Id = 44,
+                    Title = "Hacksaw Ridge ",
+                    Description = "The true story of a conscientious objector who won the Medal of Honor during WWII.",
+                    ReleaseYear = 2016,
+                    Director = "Mel Gibson",
+                    GenreId = 1,
+                    PosterUrl = "https://m.media-amazon.com/images/I/919jM7o2YXL._AC_UF1000,1000_QL80_.jpg",
+                    Actors = "Andrew Garfield, Sam Worthington, Luke Bracey",
+                    TrailerUrl = "https://www.youtube.com/watch?v=s2-1hz1juBI"
+                },
+                new Movie
+                {
+                    Id = 45,
+                    Title = "Prisoners",
+                    Description = "A father takes matters into his own hands after his daughter and her friend go missing.",
+                    ReleaseYear = 2013,
+                    Director = "Denis Villeneuve",
+                    GenreId = 2,
+                    PosterUrl = "https://m.media-amazon.com/images/M/MV5BMTg0NTIzMjQ1NV5BMl5BanBnXkFtZTcwNDc3MzM5OQ@@._V1_.jpg",
+                    Actors = "Hugh Jackman, Jake Gyllenhaal, Viola Davis",
+                    TrailerUrl = "https://www.youtube.com/watch?v=bpXfcTF6iVk"
+                },
+                new Movie
+                {
+                    Id = 46,
+                    Title = "Sicario",
+                    Description = "An idealistic FBI agent is enlisted in a government task force to aid the escalating war against drugs.",
+                    ReleaseYear = 2015,
+                    Director = "Denis Villeneuve",
+                    GenreId = 1,
+                    PosterUrl = "https://m.media-amazon.com/images/M/MV5BMjA5NjM3NTk1M15BMl5BanBnXkFtZTgwMzg1MzU2NjE@._V1_FMjpg_UX1000_.jpg",
+                    Actors = "Emily Blunt, Josh Brolin, Benicio Del Toro",
+                    TrailerUrl = "https://www.youtube.com/watch?v=G8tlEcnrGnU"
+                },
+                new Movie
+                {
+                    Id = 47,
+                    Title = "No Country for Old Men",
+                    Description = "Violence and mayhem ensue after a man finds a stash of money left from a drug deal gone wrong.",
+                    ReleaseYear = 2007,
+                    Director = "2007",
+                    GenreId = 2,
+                    PosterUrl = "https://m.media-amazon.com/images/M/MV5BMjA5Njk3MjM4OV5BMl5BanBnXkFtZTcwMTc5MTE1MQ@@._V1_FMjpg_UX1000_.jpg",
+                    Actors = "Tommy Lee Jones, Javier Bardem, Josh Brolin",
+                    TrailerUrl = "https://www.youtube.com/watch?v=38A__WT3-o0"
+                },
+                new Movie
+                {
+                    Id = 48,
+                    Title = "There WIll Be Blood",
+                    Description = "A ruthless oil prospector pursues wealth during Southern California’s oil boom of the late 19th century.",
+                    ReleaseYear = 2007,
+                    Director = "Paul Thomas Anderson",
+                    GenreId = 2,
+                    PosterUrl = "https://m.media-amazon.com/images/M/MV5BMjAxODQ4MDU5NV5BMl5BanBnXkFtZTcwMDU4MjU1MQ@@._V1_FMjpg_UX1000_.jpg",
+                    Actors = "Daniel Day-Lewis, Paul Dano, Kevin J. O'Connor",
+                    TrailerUrl = "https://www.youtube.com/watch?v=FeSLPELpMeM"
+                },
+                new Movie
+                {
+                    Id = 49,
+                    Title = "Memories of Murder",
+                    Description = "Based on the true story of South Korea’s first serial murders in history.",
+                    ReleaseYear = 2003,
+                    Director = "Bong Joon-ho",
+                    GenreId = 2,
+                    PosterUrl = "https://m.media-amazon.com/images/M/MV5BYmRjOWE5NmMtYTdkYS00ODFlLWJiMTMtYzE2NDZlZjlkZDQ0XkEyXkFqcGc@._V1_.jpg",
+                    Actors = "Song Kang-ho, Kim Sang-kyung, Roe-ha Kim",
+                    TrailerUrl = "https://www.youtube.com/watch?v=0n_HQwQU8ls"
+                },
+                new Movie
+                {
+                    Id = 50,
+                    Title = "The Handmaiden",
+                    Description = "A con woman is hired as a handmaiden to a Japanese heiress, but they fall in love.",
+                    ReleaseYear = 2016,
+                    Director = "Park Chan-wook",
+                    GenreId = 2,
+                    PosterUrl = "https://m.media-amazon.com/images/M/MV5BOTllZDI1OGItOGUxNS00OGZhLWIzMjAtYzllZTY1YTA0ZmYwXkEyXkFqcGc@._V1_.jpg",
+                    Actors = "Kim Min-hee, Ha Jung-woo, Cho Jin-woong",
+                    TrailerUrl = "https://www.youtube.com/watch?v=whldChqCsYk"
+                },
+                new Movie
+                {
+                    Id = 51,
+                    Title = "La La Land ",
+                    Description = "A jazz musician and an aspiring actress fall in love while pursuing their dreams.",
+                    ReleaseYear = 2016,
+                    Director = "Damien Chazelle",
+                    GenreId = 2,
+                    PosterUrl = "https://m.media-amazon.com/images/M/MV5BMzUzNDM2NzM2MV5BMl5BanBnXkFtZTgwNTM3NTg4OTE@._V1_.jpg",
+                    Actors = "Ryan Gosling, Emma Stone, John Legend",
+                    TrailerUrl = "https://www.youtube.com/watch?v=0pdqf4P9MB8"
+                },
+                new Movie
+                {
+                    Id = 52,
+                    Title = "Drive (2011)",
+                    Description = "A mysterious Hollywood stuntman gets caught up in the world of gangsters after a heist gone wrong.",
+                    ReleaseYear = 2011,
+                    Director = "Nicolas Winding Refn",
+                    GenreId = 1,
+                    PosterUrl = "https://m.media-amazon.com/images/M/MV5BYTFmNTFlOTAtNzEyNi00MWU2LTg3MGEtYjA2NWY3MDliNjlkXkEyXkFqcGc@._V1_.jpg",
+                    Actors = "Ryan Gosling, Carey Mulligan, Bryan Cranston",
+                    TrailerUrl = "https://www.youtube.com/watch?v=KBiOF3y1W0Y"
+                },
+                new Movie
+                {
+                    Id = 53,
+                    Title = "Ex Machina",
+                    Description = "A young programmer is selected to participate in a groundbreaking experiment in synthetic intelligence.",
+                    ReleaseYear = 2014,
+                    Director = "Alex Garland",
+                    GenreId = 5,
+                    PosterUrl = "https://m.media-amazon.com/images/M/MV5BMTUxNzc0OTIxMV5BMl5BanBnXkFtZTgwNDI3NzU2NDE@._V1_FMjpg_UX1000_.jpg",
+                    Actors = "Alicia Vikander, Domhnall Gleeson, Oscar Isaac",
+                    TrailerUrl = "https://www.youtube.com/watch?v=EoQuVnKhxaM"
+                },
+                new Movie
+                {
+                    Id = 54,
+                    Title = "Jojo Rabbit",
+                    Description = "A boy whose world view is shaped by Nazi propaganda finds his mother hiding a Jewish girl in their home.",
+                    ReleaseYear = 2019,
+                    Director = "Taika Waititi",
+                    GenreId = 3,
+                    PosterUrl = "https://m.media-amazon.com/images/M/MV5BYmFmNmUyMjYtZTFjNS00OWQyLThhZmMtMGZkYTQ3YjY0ZDQ1XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+                    Actors = "Roman Griffin Davis, Thomasin McKenzie, Scarlett Johansson",
+                    TrailerUrl = "https://www.youtube.com/watch?v=tL4McUzXfFI"
+                },
+                new Movie
+                {
+                    Id = 55,
+                    Title = "Birdman",
+                    Description = "A faded actor known for portraying a superhero struggles to mount a Broadway play.",
+                    ReleaseYear = 2014,
+                    Director = "Alejandro González Iñárritu",
+                    GenreId = 3,
+                    PosterUrl = "https://m.media-amazon.com/images/M/MV5BODAzNDMxMzAxOV5BMl5BanBnXkFtZTgwMDMxMjA4MjE@._V1_.jpg",
+                    Actors = "Michael Keaton, Emma Stone, Edward Norton",
+                    TrailerUrl = "https://www.youtube.com/watch?v=uJfLoE6hanc"
+                },
+                new Movie
+                {
+                    Id = 56,
+                    Title = "The Social Network",
+                    Description = "The story of the founding of Facebook and the resulting lawsuits.",
+                    ReleaseYear = 2010,
+                    Director = "David Fincher",
+                    GenreId = 2,
+                    PosterUrl = "https://m.media-amazon.com/images/S/pv-target-images/ea4f1c75ddd9fd937a77875d48f9ce8225ed954afcefabe7a2195311b1a97ddd.jpg",
+                    Actors = "Jesse Eisenberg, Andrew Garfield, Justin Timberlake",
+                    TrailerUrl = "https://www.youtube.com/watch?v=lB95KLmpLR4"
+                },
+                new Movie
+                {
+                    Id = 57,
+                    Title = "The Big Short ",
+                    Description = "In the mid-2000s, a group of investors bet against the US mortgage market.",
+                    ReleaseYear = 2015,
+                    Director = "Adam McKay",
+                    GenreId = 2, 
+                    PosterUrl = "https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p12157971_p_v13_al.jpg",
+                    Actors = "Christian Bale, Steve Carell, Ryan Gosling",
+                    TrailerUrl = "https://www.youtube.com/watch?v=vgqG3ITMv1Q"
                 }
             );
         }

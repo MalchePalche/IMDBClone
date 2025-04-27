@@ -18,7 +18,7 @@
                     <form method="get" asp-action="Index">
 
                         <div class="mb-3">
-                            <input type="text" name="title" class="form-    control" placeholder="Search by Title"      value="@Context.Request.Query["title"]" />
+                            <input type="text" name="title" class="form-control" placeholder="Search by Title" value="@Context.Request.Query["title"]" />
                         </div>
 
                         <div class="mb-3">
@@ -59,53 +59,55 @@
             </div>
         </div>
 
-        
         <!-- Right Side (Movies Grid) -->
         <div class="col-md-9">
-            @if (Model.Count > 0)
+            @if (Model.Any())
             {
                 <p class="text-light mb-4 fade-in">🎬 Found @Model.Count movie(s)</p>
+
+                <div class="row justify-content-center fade-in">
+                    @foreach (var movie in Model)
+                    {
+                        <div class="col-md-4 d-flex justify-content-center mb-4">
+                            <div class="card shadow rounded-4" style="width: 18rem;">
+                                <img src="@movie.PosterUrl" class="card-img-top rounded-top" style="height: 300px; object-fit: cover;" alt="@movie.Title Poster" />
+                                <div class="card-body text-center">
+                                    <h5 class="card-title">@movie.Title (@movie.ReleaseYear)</h5>
+                                    <p class="card-text text-light">Directed by: @movie.Director</p>
+                                    <p class="card-text">@movie.Description</p>
+
+                                    <a asp-action="Details" asp-route-id="@movie.Id" class="btn btn-primary mb-2">View Details</a>
+
+                                    @if (User.Identity?.IsAuthenticated ?? false)
+                                    {
+                                        if (watchlist.Contains(movie.Id))
+                                        {
+                                            <form asp-controller="Watchlist" asp-action="Remove" method="post" class="d-grid">
+                                                <input type="hidden" name="movieId" value="@movie.Id" />
+                                                <button type="submit" class="btn btn-secondary btn-sm">Remove from Watchlist</button>
+                                            </form>
+                                        }
+                                        else
+                                        {
+                                            <form asp-controller="Watchlist" asp-action="Add" method="post" class="d-grid">
+                                                <input type="hidden" name="movieId" value="@movie.Id" />
+                                                <button type="submit" class="btn btn-secondary btn-sm">Add to Watchlist</button>
+                                            </form>
+                                        }
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
             }
             else
             {
-                <p class="text-danger mb-4 fade-out">No movies found with these filters.</p>
+                <div class="text-center fade-in mt-5">
+                    <h3 class="text-warning">⚠️ No movies found matching your filters.</h3>
+                    <p class="text-light">Try adjusting your search or <a href="@Url.Action("Index", "MoviesPage")" class="text-primary">clear filters</a>!</p>
+                </div>
             }
-
-            <div class="row justify-content-center fade-in">
-                @foreach (var movie in Model)
-                {
-                    <div class="col-md-4 d-flex justify-content-center mb-4">
-                        <div class="card shadow rounded-4" style="width: 18rem;">
-                            <img src="@movie.PosterUrl" class="card-img-top rounded-top" style="height: 300px; object-fit: cover;" alt="@movie.Title Poster" />
-                            <div class="card-body text-center">
-                                <h5 class="card-title">@movie.Title (@movie.ReleaseYear)</h5>
-                                <p class="card-text text-light">Directed by: @movie.Director</p>
-                                <p class="card-text">@movie.Description</p>
-
-                                <a asp-action="Details" asp-route-id="@movie.Id" class="btn btn-primary">View Details</a>
-
-                                @if (User.Identity?.IsAuthenticated ?? false)
-                                {
-                                    if (watchlist.Contains(movie.Id))
-                                    {
-                                        <form asp-controller="Watchlist" asp-action="Remove" method="post" class="mt-2">
-                                            <input type="hidden" name="movieId" value="@movie.Id" />
-                                            <button type="submit" class="btn btn-danger btn-sm w-100">Remove from Watchlist</button>
-                                        </form>
-                                    }
-                                    else
-                                    {
-                                        <form asp-controller="Watchlist" asp-action="Add" method="post" class="mt-2">
-                                            <input type="hidden" name="movieId" value="@movie.Id" />
-                                            <button type="submit" class="btn btn-outline-primary btn-sm w-100">Add to Watchlist</button>
-                                        </form>
-                                    }
-                                }
-                            </div>
-                        </div>
-                    </div>
-                }
-            </div>
         </div>
     </div>
 </div>
@@ -120,12 +122,26 @@
     }
 
     @@keyframes fadeIn {
-        from { opacity: 0; transform: translateY(20px); }
-        to { opacity: 1; transform: translateY(0); }
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
 
     @@keyframes fadeOut {
-        from { opacity: 1; transform: translateY(0); }
-        to { opacity: 0; transform: translateY(-20px); }
+        from {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        to {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
     }
 </style>

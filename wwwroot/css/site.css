@@ -187,11 +187,57 @@ a, .nav-link {
         color: white !important;
     }
 
-/*for .btn-danger*/
- /*{
-    background-color: #d1d5db !important;
-    border-color: #d1d5db !important;
-    color: black !important;
-    font-weight: bold;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}*/
+
+.btn-secondary {
+    color: #fff;
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+    .btn-secondary:hover {
+        color: #fff;
+        background-color: #5c636a;
+        border-color: #565e64;
+    }
+
+
+.footer-modern {
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: auto;
+    padding: 1rem 0;
+    font-size: 0.9rem;
+}
+
+.footer-line {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    width: 90%;
+    margin: 0 auto 1rem auto;
+}
+
+.footer-link {
+    color: #facc15;
+    text-decoration: none;
+    transition: color 0.3s, text-shadow 0.5s;
+}
+
+    .footer-link:hover {
+        color: #ffe066;
+        text-shadow: 0 0 8px #ffe066;
+    }
+
+    /* ✨ Sparkle Effect */
+    .footer-link::after {
+        content: '✨';
+        position: absolute;
+        right: -18px;
+        opacity: 0;
+        transform: translateY(-2px);
+        transition: opacity 0.4s, transform 0.4s;
+    }
+
+    .footer-link:hover::after {
+        opacity: 1;
+        transform: translateY(-8px);
+    }

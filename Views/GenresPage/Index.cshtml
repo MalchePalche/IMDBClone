@@ -4,33 +4,79 @@
     ViewData["Title"] = "Genres";
 }
 
-<div class="container mt-5 fade-in">
-    <h2 class="text-light mb-4">🎬 Browse by Genre</h2>
+<div class="container py-5 text-center text-light fade-in">
+    <h2 class="mb-5">
+        🎬 Browse by Genre
+    </h2>
+    <p class="lead mb-5 text-light text-opacity-75">
+        Explore a world of movies across different genres. Pick your favorite and start watching!
+    </p>
     <div class="row row-cols-1 row-cols-md-3 row-cols-lg-5 g-4">
         @foreach (var genre in Model)
         {
+            var backgroundImage = $"/images/genres/{genre.Name.ToLower().Replace(" ", "")}.jpg"; // example: action.jpg
             <div class="col">
                 <a asp-action="MoviesByGenre" asp-route-id="@genre.Id" class="text-decoration-none">
-                    <div class="card bg-dark text-white text-center shadow-sm genre-card h-100">
-                        <div class="card-body d-flex align-items-center justify-content-center">
-                            <h5 class="card-title m-0">@genre.Name</h5>
+                    <div class="card genre-card text-white text-center shadow-sm h-100 p-4 rounded-4" style="background-image: url('@backgroundImage'); background-size: cover; background-position: center;">
+                        <div class="overlay"></div> <!-- dark overlay -->
+                        <div class="card-body d-flex flex-column align-items-center justify-content-center">
+                            <h5 class="card-title mb-2">@genre.Name</h5>
+                            <small class="text-opacity-75">Discover the best @genre.Name movies!</small>
                         </div>
                     </div>
                 </a>
             </div>
         }
     </div>
+    <div class="mt-5 text-opacity-75 text-light small">
+        <em>"Cinema is the most beautiful fraud in the world." - Jean-Luc Godard</em>
+    </div>
 </div>
 
 <style>
     .genre-card {
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        border-radius: 12px;
+        position: relative;
+        overflow: hidden;
+        transition: transform 0.3s, box-shadow 0.3s;
+        border: none;
+        height: 200px;
+        color: white;
     }
 
-    .genre-card:hover {
-        transform: scale(1.05);
-        box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
-        background: linear-gradient(145deg, #1f1c2c, #928dab);
+        .genre-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+        }
+
+        .genre-card .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5); /* semi-transparent dark overlay */
+            backdrop-filter: blur(2px); /* blur effect */
+            z-index: 1;
+        }
+
+        .genre-card .card-body {
+            position: relative;
+            z-index: 2;
+        }
+
+    .fade-in {
+        animation: fadeIn 1s ease forwards;
+    }
+
+    @@keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
 </style>
