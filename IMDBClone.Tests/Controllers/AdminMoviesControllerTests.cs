@@ -31,7 +31,7 @@ namespace IMDBClone.Tests.Controllers
             _context?.Dispose();
             _controller?.Dispose();
         }
-
+        
 
         [Test]
         public void Create_Get_ReturnsViewResult()

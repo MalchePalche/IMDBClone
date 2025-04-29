@@ -5,7 +5,7 @@ VisualStudioVersion = 17.11.35327.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IMDBClone", "IMDBClone.csproj", "{120A5FC5-E130-48D6-B6C2-ADF03DCF0980}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IMDBClone.Tests", "..\IMDBClone.Tests\IMDBClone.Tests.csproj", "{16AEA5EC-AA8E-428D-AFE3-11F5A550B619}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IMDBClone.Tests", "..\IMDBClone.Tests\IMDBClone.Tests.csproj", "{16AEA5EC-AA8E-428D-AFE3-11F5A550B619}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

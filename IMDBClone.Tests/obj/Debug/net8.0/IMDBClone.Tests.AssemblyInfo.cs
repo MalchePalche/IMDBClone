@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("IMDBClone.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+382481d4923c34b8fb7c9acac8ceacc8645f7c15")]
 [assembly: System.Reflection.AssemblyProductAttribute("IMDBClone.Tests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("IMDBClone.Tests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
