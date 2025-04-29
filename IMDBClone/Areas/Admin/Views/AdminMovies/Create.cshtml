@@ -1,0 +1,68 @@
+﻿@model IMDBClone.Models.Movie
+
+@{
+    ViewData["Title"] = "Add Movie";
+}
+
+<div class="container mt-4">
+    <h2 class="mb-3">Add a New Movie</h2>
+
+    <form asp-action="Create" method="post" class="bg-dark text-light p-4 rounded shadow-lg">
+        @Html.AntiForgeryToken()
+
+        <div class="mb-3">
+            <label asp-for="Title" class="form-label text-light"></label>
+            <input asp-for="Title" class="form-control bg-light text-dark" />
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Description" class="form-label text-light"></label>
+            <textarea asp-for="Description" class="form-control bg-light text-dark"></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="ReleaseYear" class="form-label text-light"></label>
+            <input asp-for="ReleaseYear" class="form-control bg-light text-dark" />
+            <span asp-validation-for="ReleaseYear" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Director" class="form-label text-light"></label>
+            <input asp-for="Director" class="form-control bg-light text-dark" />
+            <span asp-validation-for="Director" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="GenreId" class="form-label text-light">Genre</label>
+            <select asp-for="GenreId" asp-items="ViewBag.Genres" class="form-select bg-light text-dark"></select>
+            <span asp-validation-for="GenreId" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="PosterUrl" class="form-label text-light"></label>
+            <input asp-for="PosterUrl" class="form-control bg-light text-dark" />
+            <span asp-validation-for="PosterUrl" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Actors" class="form-label text-light"></label>
+            <input asp-for="Actors" class="form-control bg-light text-dark" />
+            <span asp-validation-for="Actors" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="TrailerUrl" class="form-label text-light"></label>
+            <input asp-for="TrailerUrl" class="form-control bg-light text-dark" />
+            <span asp-validation-for="TrailerUrl" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-success">Save Movie</button>
+        <a asp-action="Index" class="btn btn-secondary ms-2">Back to List</a>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

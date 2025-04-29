@@ -1,0 +1,45 @@
+﻿# Visual Studio and ASP.NET Core files
+.vs/
+bin/
+obj/
+*.user
+*.suo
+*.dbmdl
+*.jfm
+*.pfx
+*.publishsettings
+appsettings*.json
+
+# Rider files
+.idea/
+
+# Dependencies
+node_modules/
+bower_components/
+
+# Logs and database
+*.log
+logs/
+*.ldf
+*.mdf
+
+# User-specific files
+*.sln.docstates
+*.swp
+*.swo
+*.sln.cache
+*.pidb
+*.pidb-wal
+Thumbs.db
+
+# ASP.NET Runtime files
+wwwroot/lib/
+
+# Entity Framework Migrations
+Migrations/
+
+# NuGet Packages
+packages/
+*.nupkg
+project.lock.json
+project.assets.json
