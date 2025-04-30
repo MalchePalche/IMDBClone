@@ -22,10 +22,10 @@ This project was created as part of my high school diploma work for the "При�
 
 ## 🛠️ Technologies Used
 
-- **Backend:** ASP.NET Core MVC (.NET 6)  
+- **Backend:** ASP.NET Core MVC (.NET 8)  
 - **Frontend:** Razor View Engine  
 - **Database:** SQL Server + Entity Framework Core (Code First + Seeding)  
-- **Deployment:** Localhost or Render.com  
+- **Deployment:** Localhost  
 - **Version Control:** Git + GitHub
 
 ---
