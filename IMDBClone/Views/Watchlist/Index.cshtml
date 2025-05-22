@@ -22,7 +22,7 @@
                         <img src="@movie.PosterUrl" class="card-img-top rounded-top" style="height: 300px; object-fit: cover;" alt="@movie.Title Poster" />
                         <div class="card-body text-center">
                             <h5 class="card-title">@movie.Title (@movie.ReleaseYear)</h5>
-                            <p class="card-text text-muted">Directed by: @movie.Director</p>
+                            <p class="card-text">Directed by: @movie.Director</p>
                             <p class="card-text">@movie.Description</p>
 
                             <a asp-controller="MoviesPage" asp-action="Details" asp-route-id="@movie.Id" class="btn btn-primary btn-sm">View Details</a>

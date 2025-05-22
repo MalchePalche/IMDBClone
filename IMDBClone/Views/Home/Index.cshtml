@@ -7,7 +7,7 @@
 <div class="container mt-5 fade-in">
     <!-- Welcome Banner -->
     <div class="text-center mb-5">
-        <h1 class="display-4 fw-bold text-light"><i class="bi bi-camera-reels"></i> Welcome to <span class="text-gradient">IMDBClone</span></h1>
+        <h1 class="display-4 fw-bold text-light"><i class="bi bi-camera-reels"></i> Welcome to <span class="text-gradient">MaxFlix</span></h1>
         <p class="lead text-light">Explore your favorite movies, genres, and leave reviews like a real critic.</p>
         <a asp-controller="MoviesPage" asp-action="Index" class="btn btn-primary btn-lg">Browse Movies</a>
     </div>
@@ -97,12 +97,17 @@
     </div>
 
 
-
     <!-- Call to Action -->
-    <div class="text-center py-5">
-        <h4 class="text-light">Not registered yet?</h4>
-        <a asp-area="Identity" asp-page="/Account/Register" class="btn btn-success btn-lg mt-2">Create an Account</a>
-    </div>
+    @using Microsoft.AspNetCore.Identity
+
+    @if (!User.Identity.IsAuthenticated)
+    {
+        <div class="text-center py-5">
+            <h4 class="text-light">Not registered yet?</h4>
+            <a asp-area="Identity" asp-page="/Account/Register" class="btn btn-success btn-lg mt-2">Create an Account</a>
+        </div>
+    }
+    
 </div>
 
 @section Scripts {

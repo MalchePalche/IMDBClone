@@ -1,4 +1,4 @@
-﻿using IMDBClone.Data;
+﻿/*using IMDBClone.Data;
 using IMDBClone.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -70,3 +70,4 @@ namespace IMDBClone.Controllers
         }
     }
 }
+*/

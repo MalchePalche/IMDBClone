@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Environment.EnvironmentName = Environments.Production;
 
 // Database
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
@@ -87,6 +88,12 @@ using (var scope = app.Services.CreateScope())
             await userManager.AddToRoleAsync(adminUser, "User");
         }
     }
+}
+//novodobaaveno 
+if (!app.Environment.IsDevelopment())
+{
+    app.UseExceptionHandler("/Home/Error"); // za 500 i neochakvani greshki
+    app.UseStatusCodePagesWithReExecute("/Home/StatusCode", "?code={0}"); // za 404, 403, i dr.
 }
 
 app.UseStaticFiles();

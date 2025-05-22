@@ -64,5 +64,20 @@ namespace IMDBClone.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+        public IActionResult StatusCode(int code)
+        {
+            if (code == 404)
+            {
+                return View("NotFound");
+            }
+
+            return View("Error");
+        }
+        public IActionResult Crash()
+        {
+            throw new Exception("Simulated crash for testing 500 error page.");
+        }
+
+
     }
 }
